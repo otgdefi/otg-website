@@ -6,36 +6,26 @@
     <title>OTG - Off The Ground | Web3 Community</title>
     <link rel="icon" type="image/png" href="OTG.png">
     <link rel="apple-touch-icon" href="OTG.png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        
         .gotg-font { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-style: italic; transform: skewX(-2deg); }
-
         .laser-btn { position: relative; overflow: hidden; transition: all 0.3s ease; display: inline-block; }
         .laser-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent); transform: skewX(-25deg); animation: laser-scan 3s infinite; }
         @keyframes laser-scan { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
         .laser-btn:hover { box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); transform: scale(1.05) skewX(-2deg); }
-
         #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
         .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15); } }
-        
-        /* 🎡 双排走马灯动画 (时间将在JS中动态覆盖，这里保留基础结构) */
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-        
-        .carousel-track-1 { display: flex; animation: scrollLeft 15s linear infinite; width: max-content; }
-        .carousel-track-2 { display: flex; animation: scrollRight 18s linear infinite; width: max-content; }
-        
+        .carousel-track-1 { display: flex; animation: scrollLeft 12s linear infinite; width: max-content; }
+        .carousel-track-2 { display: flex; animation: scrollRight 14s linear infinite; width: max-content; }
         .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; transition: all 0.4s ease; }
         .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: all 0.4s ease; }
         .partner-logo:hover { background: rgba(230, 0, 18, 0.08); border-color: rgba(230, 0, 18, 0.3); transform: translateY(-5px) scale(1.05); }
         .partner-logo:hover img { filter: brightness(1) invert(0); opacity: 1; }
-
         #ecosystem, #feed, #partners, #og { scroll-margin-top: 100px; }
         #langBtn { min-width: 45px; text-align: center; }
     </style>
@@ -125,16 +115,21 @@
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[9px] font-bold tracking-widest mb-6 gotg-font">Genesis Assets</div>
             <h2 class="text-2xl md:text-4xl font-black mb-16 gotg-font" id="ogTitle">OG Passport NFT</h2>
+            
             <div class="flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-24">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-3xl blur opacity-10 transition duration-1000"></div>
-                    <div class="relative w-60 h-80 md:w-72 md:h-96 bg-zinc-900 rounded-3xl border border-white/10 flex flex-col items-center justify-center overflow-hidden">
-                        <div class="og-shimmer absolute inset-0 opacity-10"></div>
-                        <img src="OTG.png" alt="OG Logo" class="w-20 h-20 md:w-28 md:h-28 opacity-20 grayscale mb-6">
-                        <div class="text-red-600 font-mono text-base md:text-lg font-bold tracking-[0.4em] mb-2 gotg-font italic">Vanguard</div>
-                        <div class="text-white/20 text-[9px] font-mono uppercase">Consensus Edition</div>
+                
+                <div class="relative group cursor-pointer">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-70 transition duration-1000"></div>
+                    
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 bg-black rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover transform scale-110">
+                            <source src="og-passport.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none"></div>
                     </div>
                 </div>
+
                 <div class="lg:text-left max-w-md px-4">
                     <h3 class="text-lg md:text-2xl font-bold mb-5 gotg-font" id="ogSubTitle">Proof of Consensus</h3>
                     <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-8" id="ogDesc">The spiritual lighthouse for the early OTG community.</p>
@@ -179,7 +174,7 @@
                 commandLabel: 'Command Center', liveTitle: 'Live Intelligence', partnerTitle: 'Strategic Vanguard',
                 liveDesc: 'Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.',
                 twitterBtn: 'Follow on X →', ogTitle: 'OG Passport NFT', ogSubTitle: 'Proof of Consensus',
-                ogDesc: 'The spiritual lighthouse for the early OTG community.',
+                ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
                 ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
                 disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
                 disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.'
@@ -195,7 +190,7 @@
                 commandLabel: '指挥中心', liveTitle: '实时情报', partnerTitle: '战略合作伙伴',
                 liveDesc: '实时同步 OTG 指挥中心的最新讯号。关注我们的 X (Twitter)，不错过任何一次 Web3 发射红利。',
                 twitterBtn: '关注推特 →', ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章，先遣印记',
-                ogDesc: '这是 OTG 社区早期的精神图腾。',
+                ogDesc: '这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。',
                 ogList1: '早期开拓者身份象征', ogList2: '未来生态权益预留', ogList3: '社区治理优先权',
                 disclaimerTitle: '法律免责声明 (NFA / DYOR)',
                 disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。'
@@ -240,51 +235,23 @@
         function update() { ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height / 2; stars.forEach(s => { s.z -= 2; if (s.z <= 0) s.z = canvas.width; const sx = (s.x * (canvas.width / s.z)) + cx, sy = (s.y * (canvas.width / s.z)) + cy, size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); }); requestAnimationFrame(update); }
         window.addEventListener('resize', init); init(); update();
 
-        // 🎡 智能双排 Logo 逻辑 (支持无限扩展 & 自动控速)
-        const partnerCount = 33; // 👈 目前是 33 个 Logo
+        // Logo Logic
+        const partnerCount = 33; 
         const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg'];
         
-        function getLogoHTML(i) { 
-            return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner"></div>`; 
-        }
-        
+        function getLogoHTML(i) { return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner"></div>`; }
         function generateLogos() { 
-            let row1 = '', row2 = ''; 
-            let count1 = 0, count2 = 0;
-            
-            for (let i = 1; i <= partnerCount; i++) { 
-                if (i <= Math.ceil(partnerCount / 2)) {
-                    row1 += getLogoHTML(i);
-                    count1++;
-                } else {
-                    row2 += getLogoHTML(i);
-                    count2++;
-                }
-            } 
-            
-            const track1 = document.getElementById('logo-track-1');
-            const track2 = document.getElementById('logo-track-2');
-            
-            track1.innerHTML = row1 + row1; 
-            track2.innerHTML = row2 + row2; 
-            
-            // ⚡ 根据 Logo 数量动态计算滚动时间
-            track1.style.animationDuration = `${count1 * 2.5}s`;
-            track2.style.animationDuration = `${count2 * 2.8}s`; 
+            let row1 = '', row2 = ''; let count1 = 0, count2 = 0;
+            for (let i = 1; i <= partnerCount; i++) { if (i <= Math.ceil(partnerCount / 2)) { row1 += getLogoHTML(i); count1++; } else { row2 += getLogoHTML(i); count2++; } } 
+            const track1 = document.getElementById('logo-track-1'); const track2 = document.getElementById('logo-track-2');
+            track1.innerHTML = row1 + row1; track2.innerHTML = row2 + row2; 
+            track1.style.animationDuration = `${count1 * 2.5}s`; track2.style.animationDuration = `${count2 * 2.8}s`; 
         }
-        
         function tryNextFormat(img) { 
-            const index = img.getAttribute('data-index');
-            let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
-            
-            if (formatIndex < formats.length) { 
-                img.setAttribute('data-format-index', formatIndex); 
-                img.src = `partners/${index}.${formats[formatIndex]}`; 
-            } else { 
-                img.parentElement.style.display = 'none'; 
-            } 
+            const index = img.getAttribute('data-index'); let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
+            if (formatIndex < formats.length) { img.setAttribute('data-format-index', formatIndex); img.src = `partners/${index}.${formats[formatIndex]}`; } 
+            else { img.parentElement.style.display = 'none'; } 
         }
-        
         generateLogos();
     </script>
 </body>
