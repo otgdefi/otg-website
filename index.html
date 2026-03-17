@@ -49,7 +49,7 @@
             background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent); 
             transform: skewX(-25deg); 
             animation: laser-scan 3s infinite; 
-            z-index: -1; /* 确保激光在文字下方 */
+            z-index: -1; 
         }
         @keyframes laser-scan { 
             0% { left: -100%; } 
@@ -182,22 +182,22 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div class="glass-card p-8 rounded-[2rem]">
                 <div class="text-red-600 text-2xl mb-6">🚀</div>
-                <h3 class="text-lg font-black mb-4 gotg-font">DeFi</h3>
+                <h3 class="text-lg font-black mb-4 gotg-font" id="engine1Title">DeFi</h3>
                 <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="defiDesc">Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.</p>
             </div>
             <div class="glass-card p-8 rounded-[2rem]">
                 <div class="text-red-600 text-2xl mb-6">🪂</div>
-                <h3 class="text-lg font-black mb-4 gotg-font">Airdrop</h3>
+                <h3 class="text-lg font-black mb-4 gotg-font" id="engine2Title">Airdrop</h3>
                 <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="airdropDesc">Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.</p>
             </div>
             <div class="glass-card p-8 rounded-[2rem]">
                 <div class="text-red-600 text-2xl mb-6">🎮</div>
-                <h3 class="text-lg font-black mb-4 gotg-font">GameFi</h3>
+                <h3 class="text-lg font-black mb-4 gotg-font" id="engine3Title">GameFi</h3>
                 <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="gamefiDesc">Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.</p>
             </div>
             <div class="glass-card p-8 rounded-[2rem]">
                 <div class="text-red-600 text-2xl mb-6">💎</div>
-                <h3 class="text-lg font-black mb-4 gotg-font">Meme</h3>
+                <h3 class="text-lg font-black mb-4 gotg-font" id="engine4Title">Meme</h3>
                 <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p>
             </div>
         </div>
@@ -298,7 +298,7 @@
         // 🌍 1. 双语言配置
         const i18n = {
             en: {
-                lang: 'CN', connect: 'Connect Wallet', navGallery: 'Gallery', heroGallery: 'View Gallery →',
+                langBtn: 'CN', navConnect: 'Connect Wallet', navGallery: 'Gallery', heroGallery: 'View Gallery →',
                 heroDesc: 'Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.',
                 joinBtn: 'Join Community', exploreBtn: 'Explore Ecosystem', engineTitle: 'Core Engines',
                 defiDesc: 'Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.',
@@ -311,10 +311,11 @@
                 ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
                 ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
                 disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
-                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.'
+                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.',
+                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme'
             },
             cn: {
-                lang: 'EN', connect: '连接钱包', navGallery: '画廊', heroGallery: '浏览画廊 →',
+                langBtn: 'EN', navConnect: '连接钱包', navGallery: '画廊', heroGallery: '浏览画廊 →',
                 heroDesc: '助力每一位 Web3 探索者实现从 0 到 1 的财富起飞。深耕 DeFi、GameFi、空投研判与 Meme 热潮。',
                 joinBtn: '加入社区', exploreBtn: '探索生态', engineTitle: '核心引擎',
                 defiDesc: '深度解析协议逻辑，挖掘可持续复利收益，探索流动性策略。',
@@ -327,7 +328,8 @@
                 ogDesc: '这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。',
                 ogList1: '早期开拓者身份象征', ogList2: '未来生态权益预留', ogList3: '社区治理优先权',
                 disclaimerTitle: '法律免责声明 (NFA / DYOR)',
-                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。'
+                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。',
+                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme'
             }
         };
 
@@ -336,26 +338,18 @@
         function updateContent() {
             const data = i18n[currentLang];
             
-            // 批量更新文本节点
-            const elementsToUpdate = [
-                'langBtn', 'navConnect', 'navGallery', 'heroGallery', 'heroDesc', 
-                'joinBtn', 'exploreBtn', 'engineTitle', 'defiDesc', 'airdropDesc', 
-                'gamefiDesc', 'memeDesc', 'commandLabel', 'liveTitle', 'liveDesc', 
-                'partnerTitle', 'ogTitle', 'ogSubTitle', 'ogDesc', 'ogList1', 
-                'ogList2', 'ogList3', 'disclaimerTitle', 'disclaimerText', 'twitterBtn'
-            ];
-
-            elementsToUpdate.forEach(id => {
+            for (const [id, text] of Object.entries(data)) {
                 const el = document.getElementById(id);
                 if (el) {
-                    // 保护带特效按钮内的 span 结构
-                    if (el.querySelector('span.relative')) {
-                        el.querySelector('span.relative').innerText = data[id];
+                    // 保护带特效按钮内的 span 结构，避免样式被覆盖
+                    const span = el.querySelector('span.relative');
+                    if (span) {
+                        span.innerText = text;
                     } else {
-                        el.innerText = data[id];
+                        el.innerText = text;
                     }
                 }
-            });
+            }
         }
 
         function toggleLang() { 
@@ -364,9 +358,7 @@
             updateContent(); 
         }
         
-        // 页面加载时初始化语言
         document.addEventListener('DOMContentLoaded', updateContent);
-
 
         // 🌌 2. 星空引擎逻辑
         const canvas = document.getElementById('starfield'); 
@@ -411,7 +403,6 @@
         window.addEventListener('resize', initStars); 
         initStars(); 
         updateStars();
-
 
         // 🎡 3. 动态合作伙伴 Logo 引擎
         const partnerCount = 33; 
@@ -461,7 +452,6 @@
             } 
         };
         
-        // 执行 Logo 加载
         document.addEventListener('DOMContentLoaded', generateLogos);
     </script>
 </body>
