@@ -6,18 +6,57 @@
     <title>OTG - Off The Ground | Web3 Community</title>
     <link rel="icon" type="image/png" href="OTG.png">
     <link rel="apple-touch-icon" href="OTG.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
+        .gotg-font {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-style: italic;
+            transform: skewX(-2deg);
+        }
+
+        .laser-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .laser-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: skewX(-25deg);
+            animation: laser-scan 3s infinite;
+        }
+        @keyframes laser-scan {
+            0% { left: -100%; }
+            50% { left: 150%; }
+            100% { left: 150%; }
+        }
+        .laser-btn:hover {
+            box-shadow: 0 0 20px rgba(230, 0, 18, 0.6);
+            transform: scale(1.05) skewX(-2deg);
+        }
+
         #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
-        .glow-red { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.2); background: rgba(230, 0, 18, 0.05); } }
+        
+        @media (min-width: 1024px) { 
+            .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.2); } 
+        }
+        
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .carousel-track { display: flex; animation: scroll 25s linear infinite; }
         .partner-logo { width: 160px; height: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 10px; filter: grayscale(100%); opacity: 0.4; transition: all 0.3s; }
-        @media (min-width: 768px) { .partner-logo { width: 220px; height: 100px; padding: 20px; } }
-        .partner-logo:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
         .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .og-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); background-size: 200% 100%; animation: shimmer 3s infinite; }
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
@@ -31,55 +70,55 @@
     <nav class="flex justify-between items-center px-6 py-4 md:px-12 md:py-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/90 backdrop-blur-md z-50">
         <div class="flex items-center gap-2 md:gap-3">
             <img src="OTG.png" alt="OTG Logo" class="w-8 h-8 md:w-10 md:h-10 drop-shadow-[0_0_10px_rgba(230,0,18,0.5)]">
-            <span class="text-lg md:text-xl font-black tracking-tighter uppercase">Off The Ground</span>
+            <span class="text-lg md:text-xl font-black tracking-tighter uppercase gotg-font">Off The Ground</span>
         </div>
         <div class="flex items-center gap-2 md:gap-4">
             <button onclick="toggleLang()" id="langBtn" class="text-[10px] md:text-xs font-bold border border-white/20 px-3 py-1.5 rounded-md hover:bg-white/10 transition uppercase tracking-widest">CN</button>
-            <button class="border border-red-600 bg-red-600/10 px-4 py-2 rounded-full font-bold text-[10px] md:text-xs hover:bg-red-600 transition whitespace-nowrap" id="navConnect">Connect Wallet</button>
+            <button class="laser-btn border border-red-600 bg-red-600/20 px-4 py-2 rounded-full font-bold text-[10px] md:text-xs text-white gotg-font" id="navConnect">Connect Wallet</button>
         </div>
     </nav>
 
     <section class="py-16 md:py-32 px-6 flex flex-col items-center text-center" id="hero">
-        <div class="relative mb-6 md:mb-10">
+        <div class="relative mb-6 md:mb-10 text-white">
             <img src="OTG.png" alt="OTG Logo" class="w-32 h-32 md:w-48 md:h-48 drop-shadow-[0_0_40px_rgba(230,0,18,0.6)] animate-pulse">
         </div>
-        <h1 class="text-4xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tighter uppercase italic leading-[1.1]">
+        <h1 class="text-4xl md:text-7xl lg:text-9xl font-black mb-6 leading-[1.1] gotg-font">
             <span class="bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">Off The Ground</span><br>
             <span class="text-red-600 drop-shadow-[0_0_20px_rgba(230,0,18,0.5)]">To The Moon</span>
         </h1>
-        <p class="max-w-2xl text-gray-400 text-base md:text-xl mb-10 leading-relaxed px-4" id="heroDesc">
+        <p class="max-w-2xl text-gray-400 text-base md:text-xl mb-10 leading-relaxed px-4 text-white" id="heroDesc">
             Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-6">
-            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="bg-red-600 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition glow-red text-center text-white" id="joinBtn">Join Community</a>
-            <a href="#ecosystem" class="border border-white/20 bg-white/5 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition text-center text-white" id="exploreBtn">Explore Ecosystem</a>
+            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-10 py-4 rounded-xl font-bold text-lg text-center text-white gotg-font" id="joinBtn">Join Community</a>
+            <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-10 py-4 rounded-xl font-bold text-lg text-center text-white gotg-font" id="exploreBtn">Explore Ecosystem</a>
         </div>
     </section>
 
-    <section id="ecosystem" class="max-w-7xl mx-auto py-16 md:py-24 px-6">
+    <section id="ecosystem" class="max-w-7xl mx-auto py-16 md:py-24 px-6 text-white">
         <div class="flex items-center gap-4 mb-12 md:mb-16">
-            <h2 class="text-2xl md:text-3xl font-black italic uppercase tracking-widest text-white" id="engineTitle">Core Engines</h2>
+            <h2 class="text-2xl md:text-4xl font-black text-white gotg-font" id="engineTitle">Core Engines</h2>
             <div class="h-1 flex-grow bg-gradient-to-r from-red-600 to-transparent opacity-50"></div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 text-white">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left">
-                <div class="text-red-600 text-3xl md:text-4xl mb-6 text-white">🚀</div>
-                <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-white">DeFi</h3>
+                <div class="text-red-600 text-3xl md:text-4xl mb-6">🚀</div>
+                <h3 class="text-xl md:text-2xl font-black mb-4 gotg-font">DeFi</h3>
                 <p class="text-gray-400 text-sm leading-relaxed" id="defiDesc">Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.</p>
             </div>
-            <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left text-white">
-                <div class="text-red-600 text-3xl md:text-4xl mb-6 text-white">🪂</div>
-                <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-white">Airdrop</h3>
+            <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left">
+                <div class="text-red-600 text-3xl md:text-4xl mb-6">🪂</div>
+                <h3 class="text-xl md:text-2xl font-black mb-4 gotg-font text-white">Airdrop</h3>
                 <p class="text-gray-400 text-sm leading-relaxed" id="airdropDesc">Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.</p>
             </div>
             <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left text-white">
-                <div class="text-red-600 text-3xl md:text-4xl mb-6 text-white">🎮</div>
-                <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-white">GameFi</h3>
+                <div class="text-red-600 text-3xl md:text-4xl mb-6 text-white text-white">🎮</div>
+                <h3 class="text-xl md:text-2xl font-black mb-4 gotg-font">GameFi</h3>
                 <p class="text-gray-400 text-sm leading-relaxed text-white" id="gamefiDesc">Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.</p>
             </div>
-            <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left text-white">
-                <div class="text-red-600 text-3xl md:text-4xl mb-6 text-white">💎</div>
-                <h3 class="text-xl md:text-2xl font-black mb-4 uppercase text-white">Meme</h3>
+            <div class="glass-card p-8 md:p-10 rounded-[2rem] text-left">
+                <div class="text-red-600 text-3xl md:text-4xl mb-6">💎</div>
+                <h3 class="text-xl md:text-2xl font-black mb-4 gotg-font text-white">Meme</h3>
                 <p class="text-gray-400 text-sm leading-relaxed text-white" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p>
             </div>
         </div>
@@ -87,24 +126,22 @@
 
     <section id="feed" class="max-w-7xl mx-auto py-16 md:py-24 px-6 border-t border-white/5">
         <div class="flex flex-col lg:flex-row gap-12 items-start text-white">
-            <div class="lg:w-1/3 text-white text-white">
-                <div class="inline-block px-3 py-1 border border-red-600/50 rounded-full text-red-500 text-[10px] font-bold tracking-widest mb-4 uppercase bg-red-600/5 text-white" id="commandLabel">Command Center</div>
-                <h2 class="text-3xl md:text-4xl font-black mb-6 italic uppercase text-white" id="liveTitle">Live Intelligence</h2>
-                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6 text-white" id="liveDesc">
-                    Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.
-                </p>
-                <div class="flex items-center gap-2 text-emerald-500 font-bold text-sm mb-6 text-white text-white">
-                    <span class="relative flex h-2 w-2 text-white">
+            <div class="lg:w-1/3 text-white">
+                <div class="inline-block px-3 py-1 border border-red-600/50 rounded-full text-red-500 text-[10px] font-bold tracking-widest mb-4 gotg-font" id="commandLabel">Command Center</div>
+                <h2 class="text-3xl md:text-5xl font-black mb-6 gotg-font" id="liveTitle">Live Intelligence</h2>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-6" id="liveDesc">Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.</p>
+                <div class="flex items-center gap-2 text-emerald-500 font-bold text-sm mb-6">
+                    <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                     </span>
                     SYSTEM ONLINE
                 </div>
-                <a href="https://x.com/otgdeficommunit" target="_blank" class="inline-block bg-white/5 border border-white/10 px-6 py-3 rounded-xl text-xs font-bold hover:bg-white/10 transition text-white text-white text-white text-white" id="twitterBtn">Follow on X →</a>
+                <a href="https://x.com/otgdeficommunit" target="_blank" class="laser-btn inline-block bg-white/5 border border-white/10 px-6 py-3 rounded-xl text-xs font-bold transition gotg-font text-white" id="twitterBtn">Follow on X →</a>
             </div>
-            <div class="w-full lg:w-2/3 glass-card rounded-3xl p-1 overflow-hidden min-h-[500px] flex items-center justify-center relative text-white">
-                <div class="w-full text-white text-white">
-                    <a class="twitter-timeline text-white text-white" data-height="500" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/otgdeficommunit?ref_src=twsrc%5Etfw">Loading signals...</a> 
+            <div class="w-full lg:w-2/3 glass-card rounded-3xl p-1 overflow-hidden min-h-[500px] flex items-center justify-center relative">
+                <div class="w-full text-white">
+                    <a class="twitter-timeline" data-height="500" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/otgdeficommunit?ref_src=twsrc%5Etfw">Loading...</a> 
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
@@ -112,34 +149,34 @@
     </section>
 
     <section id="partners" class="py-16 md:py-24 border-t border-b border-white/5 bg-zinc-900/30 overflow-hidden text-white">
-        <div class="max-w-7xl mx-auto px-6 mb-10 text-center text-white">
-            <h2 class="text-xl md:text-2xl font-black italic uppercase tracking-wider text-white" id="partnerTitle">Strategic Vanguard</h2>
+        <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
+            <h2 class="text-xl md:text-3xl font-black gotg-font" id="partnerTitle">Strategic Vanguard</h2>
         </div>
-        <div class="w-full relative text-white text-white">
-            <div class="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
-            <div class="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
-            <div id="logo-track" class="carousel-track text-white text-white"></div>
+        <div class="w-full relative">
+            <div class="absolute inset-y-0 left-0 w-20 md:w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 text-white"></div>
+            <div class="absolute inset-y-0 right-0 w-20 md:w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 text-white"></div>
+            <div id="logo-track" class="carousel-track text-white"></div>
         </div>
     </section>
 
     <section id="og" class="py-20 md:py-32 bg-gradient-to-b from-transparent via-red-950/10 to-transparent overflow-hidden text-white">
-        <div class="max-w-6xl mx-auto px-6 text-center text-white text-white">
-            <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[10px] font-bold tracking-widest mb-6 uppercase bg-red-600/5 text-white">Genesis Assets</div>
-            <h2 class="text-3xl md:text-5xl font-black mb-12 italic uppercase text-white" id="ogTitle">OG Passport NFT</h2>
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-10 md:gap-20 text-white">
-                <div class="relative group text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center text-white">
+            <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[10px] font-bold tracking-widest mb-6 gotg-font">Genesis Assets</div>
+            <h2 class="text-3xl md:text-6xl font-black mb-12 gotg-font" id="ogTitle">OG Passport NFT</h2>
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-10 md:gap-20">
+                <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-3xl blur opacity-20 group-hover:opacity-60 transition duration-1000"></div>
-                    <div class="relative w-64 h-80 md:w-72 md:h-96 bg-zinc-900 rounded-3xl border border-white/10 flex flex-col items-center justify-center overflow-hidden text-white">
+                    <div class="relative w-64 h-80 md:w-72 md:h-96 bg-zinc-900 rounded-3xl border border-white/10 flex flex-col items-center justify-center overflow-hidden">
                         <div class="og-shimmer absolute inset-0 opacity-20"></div>
                         <img src="OTG.png" alt="OG Logo" class="w-24 h-24 md:w-32 md:h-32 opacity-20 grayscale mb-4">
-                        <div class="text-red-600 font-mono text-lg md:text-xl font-bold tracking-[0.5em] mb-2 uppercase italic">Vanguard</div>
-                        <div class="text-white/20 text-[10px] font-mono uppercase text-white">Consensus Edition</div>
+                        <div class="text-red-600 font-mono text-lg md:text-xl font-bold tracking-[0.5em] mb-2 gotg-font italic">Vanguard</div>
+                        <div class="text-white/20 text-[10px] font-mono uppercase">Consensus Edition</div>
                     </div>
                 </div>
-                <div class="lg:text-left max-w-md px-4 text-white">
-                    <h3 class="text-xl md:text-2xl font-bold mb-4 text-white" id="ogSubTitle">Proof of Consensus</h3>
+                <div class="lg:text-left max-w-md px-4">
+                    <h3 class="text-xl md:text-3xl font-bold mb-4 gotg-font" id="ogSubTitle">Proof of Consensus</h3>
                     <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-6 text-white" id="ogDesc">The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.</p>
-                    <ul class="text-xs md:text-sm space-y-3 mb-8 text-gray-400 text-white" id="ogList">
+                    <ul class="text-xs md:text-sm space-y-3 mb-8 text-gray-400" id="ogList">
                         <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Founding Adopter Status</li>
                         <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Priority Ecosystem Access</li>
                         <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Governance Participation</li>
@@ -149,13 +186,22 @@
         </div>
     </section>
 
-    <footer class="py-12 md:py-20 border-t border-white/5 text-center bg-[#050505] text-white">
-        <div class="flex justify-center gap-6 md:gap-10 mb-6 px-6 overflow-x-auto text-white">
-            <a href="https://x.com/otgdeficommunit" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest">Twitter</a>
-            <a href="https://instagram.com/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest">Instagram</a>
-            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest">Linktree</a>
+    <section class="max-w-4xl mx-auto py-12 px-6 border-t border-white/5">
+        <div class="bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10">
+            <h3 class="gotg-font text-red-600 text-sm mb-4" id="disclaimerTitle">Disclaimer</h3>
+            <p class="text-gray-500 text-[10px] md:text-xs leading-relaxed" id="disclaimerText">
+                Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.
+            </p>
         </div>
-        <p class="text-gray-600 text-[10px] md:text-xs text-white">© 2026 OTG DeFi Community. All systems functional.</p>
+    </section>
+
+    <footer class="py-12 md:py-20 border-t border-white/5 text-center bg-[#050505] text-white">
+        <div class="flex justify-center gap-6 md:gap-10 mb-6 px-6 overflow-x-auto">
+            <a href="https://x.com/otgdeficommunit" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest gotg-font text-white">Twitter</a>
+            <a href="https://instagram.com/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest gotg-font text-white">Instagram</a>
+            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-xs md:text-sm transition uppercase tracking-widest gotg-font text-white">Linktree</a>
+        </div>
+        <p class="text-gray-600 text-[10px] md:text-xs uppercase tracking-widest text-white">© 2026 OTG DeFi Community. All systems functional.</p>
     </footer>
 
     <script>
@@ -173,10 +219,9 @@
                 twitterBtn: 'Follow on X →', partnerTitle: 'Strategic Vanguard', ogTitle: 'OG Passport NFT',
                 ogSubTitle: 'Proof of Consensus',
                 ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
-                ogList: `
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Founding Adopter Status</li>
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Priority Ecosystem Access</li>
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Governance Participation</li>`
+                ogList: `<li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Founding Adopter Status</li><li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Priority Ecosystem Access</li><li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> Governance Participation</li>`,
+                disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
+                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.'
             },
             cn: {
                 lang: 'EN', connect: '连接钱包',
@@ -191,10 +236,9 @@
                 twitterBtn: '跳转官方推特 →', partnerTitle: '战略合作伙伴', ogTitle: 'OG 通行证 NFT',
                 ogSubTitle: '共识勋章，先遣印记',
                 ogDesc: '这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。',
-                ogList: `
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 早期开拓者身份象征</li>
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 未来生态权益预留</li>
-                    <li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 社区治理优先权</li>`
+                ogList: `<li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 早期开拓者身份象征</li><li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 未来生态权益预留</li><li class="flex items-center gap-3 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span> 社区治理优先权</li>`,
+                disclaimerTitle: '法律免责声明 (NFA / DYOR)',
+                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。'
             }
         };
 
@@ -220,17 +264,17 @@
             document.getElementById('ogSubTitle').innerText = data.ogSubTitle;
             document.getElementById('ogDesc').innerText = data.ogDesc;
             document.getElementById('ogList').innerHTML = data.ogList;
+            document.getElementById('disclaimerTitle').innerText = data.disclaimerTitle;
+            document.getElementById('disclaimerText').innerText = data.disclaimerText;
         }
         function toggleLang() { currentLang = currentLang === 'en' ? 'cn' : 'en'; localStorage.setItem('otg_lang', currentLang); updateContent(); }
         updateContent();
 
-        /* 星空背景 */
         const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d'); let stars = []; const numStars = 400;
         function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; for (let i = 0; i < numStars; i++) { stars.push({ x: Math.random() * canvas.width - canvas.width / 2, y: Math.random() * canvas.height - canvas.height / 2, z: Math.random() * canvas.width, o: Math.random() }); } }
         function update() { ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height / 2; for (let i = 0; i < numStars; i++) { let s = stars[i]; s.z -= 2; if (s.z <= 0) s.z = canvas.width; const sx = (s.x * (canvas.width / s.z)) + cx, sy = (s.y * (canvas.width / s.z)) + cy; const size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); } requestAnimationFrame(update); }
         window.addEventListener('resize', init); init(); update();
 
-        /* 合作伙伴 Logo */
         const track = document.getElementById('logo-track'); const partnerCount = 8; const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg'];
         function generateLogos() { let logosHTML = ''; for (let i = 1; i <= partnerCount; i++) { logosHTML += `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner ${i}"></div>`; } track.innerHTML = logosHTML + logosHTML; }
         function tryNextFormat(img) { const index = img.getAttribute('data-index'); let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; if (formatIndex < formats.length) { img.setAttribute('data-format-index', formatIndex); img.src = `partners/${index}.${formats[formatIndex]}`; } else { img.onerror = null; img.src = `https://via.placeholder.com/200x80/1a1a1a/666666?text=Partner+${index}`; } }
