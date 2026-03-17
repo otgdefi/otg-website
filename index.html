@@ -1,134 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTG - Off The Ground | Web3 Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0A0A0A; color: white; margin: 0; font-family: sans-serif; }
+        .glow-red { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
+    </style>
 </head>
-<body>
-<p class="p1">import React from 'react';</p>
-<p class="p1">import { Rocket, Shield, Plane, Coins, Twitter, Instagram, Link2, Zap } from 'lucide-react';</p>
-<p class="p2"><br></p>
-<p class="p1">const OTGWebsite = () =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">  </span>return (</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div className="min-h-screen bg-[#0A0A0A] text-white font-sans selection:bg-red-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>{/* Navigation */}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;nav className="flex justify-between items-center p-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/80 backdrop-blur-md z-50"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="flex items-center gap-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center font-bold italic"&gt;OTG&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;span className="text-xl font-black tracking-tighter uppercase"&gt;Off The Ground&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="hidden md:flex gap-8 text-sm font-medium text-gray-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#about" className="hover:text-red-500 transition"&gt;About&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#ecosystem" className="hover:text-red-500 transition"&gt;Ecosystem&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#og" className="hover:text-red-500 transition"&gt;OG Passport&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;a href="#connect" className="hover:text-red-500 transition"&gt;Connect&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;button className="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-red-600 hover:text-white transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>Connect Wallet</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>{/* Hero Section */}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section className="relative py-20 px-6 flex flex-col items-center text-center overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="absolute top-20 w-72 h-72 bg-red-600/20 blur-[120px] rounded-full"&gt;&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>{/* 这里放置你的 Logo 图片 */}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="relative mb-8 animate-bounce-slow"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">           </span>&lt;img src="/api/placeholder/200/200" alt="OTG Logo" className="w-48 h-48 drop-shadow-[0_0_30px_rgba(230,0,18,0.5)]" /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tighter bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>OFF THE GROUND</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p className="max-w-2xl text-gray-400 text-lg md:text-xl mb-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>助力每一位 Web3 探索者实现从 0 到 1 的财富起飞。深耕 DeFi、GameFi、空投研判与 Meme 热潮。</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="flex flex-wrap justify-center gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;button className="bg-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition shadow-[0_0_20px_rgba(230,0,18,0.4)]"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>Join Discord</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;button className="border border-white/20 bg-white/5 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>View Linktree</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>{/* 4 Engines Section */}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="ecosystem" className="py-20 max-w-7xl mx-auto px-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2 className="text-3xl font-bold mb-12 border-l-4 border-red-600 pl-4 uppercase tracking-widest"&gt;Core Engines&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>{[</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ title: "DeFi Intelligence", icon: &lt;Zap className="text-red-500" /&gt;, desc: "深度解析协议逻辑，挖掘可持续复利收益。" },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ title: "GameFi Ecosystem", icon: &lt;Shield className="text-red-500" /&gt;, desc: "探索 P2E 潜力项目，抢占早期参与先机。" },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ title: "Airdrop Farming", icon: &lt;Plane className="text-red-500" /&gt;, desc: "精细化空投路径规划，拒绝无效交互。" },</p>
-<p class="p1"><span class="Apple-converted-space">            </span>{ title: "Meme Alpha", icon: &lt;Coins className="text-red-500" /&gt;, desc: "捕捉市场情绪，敏锐洞察高爆发资产。" }</p>
-<p class="p1"><span class="Apple-converted-space">          </span>].map((item, idx) =&gt; (</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div key={idx} className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-red-600/50 transition-all duration-500 hover:-translate-y-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;div className="mb-4 bg-red-600/10 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-red-600 transition-colors"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>{item.icon}</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;h3 className="text-xl font-bold mb-2 group-hover:text-red-500 transition"&gt;{item.title}&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;p className="text-gray-500 text-sm leading-relaxed"&gt;{item.desc}&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>))}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>{/* OG Passport Section */}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;section id="og" className="py-20 bg-gradient-to-b from-transparent via-red-900/10 to-transparent"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="flex-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">             </span>&lt;div className="w-64 h-64 mx-auto bg-gradient-to-tr from-gray-700 to-silver-300 rounded-3xl rotate-12 shadow-2xl flex items-center justify-center border-4 border-white/10 relative overflow-hidden group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span className="text-4xl font-black opacity-20 italic"&gt;OG PASS&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">             </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="flex-[1.5] text-center md:text-left"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 className="text-4xl font-black mb-6"&gt;OTG OG PASSPORT&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-gray-400 text-lg mb-8 leading-relaxed"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>这是我们社区早期的共识勋章。它不只是一个 NFT，更是见证 OTG 从 0 到 1 的“先遣队”身份标识。持有者将在未来的生态扩张中获得最优先的发射权限。</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span className="inline-block px-4 py-2 border border-red-600/50 rounded-lg text-red-500 font-mono text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>Limited Edition - 早期开拓者专属</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>{/* Social Terminal */}</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;footer id="connect" className="py-20 border-t border-white/10 px-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 className="text-2xl font-bold mb-2"&gt;Connect to the Command Center&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p className="text-gray-500"&gt;加入我们的社交矩阵，获取最新发射信号。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;div className="flex gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="https://x.com/otgdeficommunit" className="p-4 bg-white/5 rounded-2xl hover:bg-red-600 transition active:scale-95"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;Twitter size={24} /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="https://instagram.com/otgdeficommunity" className="p-4 bg-white/5 rounded-2xl hover:bg-red-600 transition active:scale-95"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;Instagram size={24} /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="https://linktr.ee/otgdeficommunity" className="p-4 bg-white/5 rounded-2xl hover:bg-red-600 transition active:scale-95"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">              </span>&lt;Link2 size={24} /&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div className="text-center mt-20 text-gray-600 text-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>© 2026 OTG (Off The Ground) DeFi Community. Powered by the OTG Vanguard.</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;/footer&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>);</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">export default OTGWebsite;</p>
+<body class="selection:bg-red-600">
+    <nav class="flex justify-between items-center p-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/80 backdrop-blur-md z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center font-bold italic">OTG</div>
+            <span class="text-xl font-black tracking-tighter uppercase">Off The Ground</span>
+        </div>
+        <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-red-600 hover:text-white transition">Connect Wallet</button>
+    </nav>
+
+    <section class="py-20 px-6 flex flex-col items-center text-center">
+        <div class="relative mb-8">
+            <img src="OTG.png" alt="OTG Logo" class="w-48 h-48 drop-shadow-[0_0_30px_rgba(230,0,18,0.5)]">
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase italic">Off The Ground</h1>
+        <p class="max-w-2xl text-gray-400 text-lg mb-10 leading-relaxed">
+            助力每一位 Web3 探索者实现从 0 到 1 的财富起飞。<br>深耕 DeFi、GameFi、空投研判与 Meme 热潮。
+        </p>
+        <div class="flex gap-4">
+            <a href="https://linktr.ee/otgdeficommunity" class="bg-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition glow-red">Join Community</a>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/10 text-center">
+        <p class="text-gray-500 text-sm">© 2026 OTG (Off The Ground) DeFi Community.</p>
+    </footer>
 </body>
 </html>
