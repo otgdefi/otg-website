@@ -6,26 +6,36 @@
     <title>OTG - Off The Ground | Web3 Community</title>
     <link rel="icon" type="image/png" href="OTG.png">
     <link rel="apple-touch-icon" href="OTG.png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
         .gotg-font { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-style: italic; transform: skewX(-2deg); }
+
         .laser-btn { position: relative; overflow: hidden; transition: all 0.3s ease; display: inline-block; }
         .laser-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent); transform: skewX(-25deg); animation: laser-scan 3s infinite; }
         @keyframes laser-scan { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
         .laser-btn:hover { box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); transform: scale(1.05) skewX(-2deg); }
+
         #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
         .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15); } }
+        
+        /* 🎡 双排走马灯动画 (时间将在JS中动态覆盖，这里保留基础结构) */
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-        .carousel-track-1 { display: flex; animation: scrollLeft 12s linear infinite; width: max-content; }
-        .carousel-track-2 { display: flex; animation: scrollRight 14s linear infinite; width: max-content; }
+        
+        .carousel-track-1 { display: flex; animation: scrollLeft 15s linear infinite; width: max-content; }
+        .carousel-track-2 { display: flex; animation: scrollRight 18s linear infinite; width: max-content; }
+        
         .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; transition: all 0.4s ease; }
         .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: all 0.4s ease; }
         .partner-logo:hover { background: rgba(230, 0, 18, 0.08); border-color: rgba(230, 0, 18, 0.3); transform: translateY(-5px) scale(1.05); }
         .partner-logo:hover img { filter: brightness(1) invert(0); opacity: 1; }
+
         #ecosystem, #feed, #partners, #og { scroll-margin-top: 100px; }
         #langBtn { min-width: 45px; text-align: center; }
     </style>
@@ -41,7 +51,6 @@
         </div>
         <div class="flex items-center gap-3 md:gap-4">
             <a href="gallery.html" class="hidden sm:block text-[9px] md:text-xs font-bold text-gray-400 hover:text-white transition uppercase tracking-widest gotg-font" id="navGallery">Gallery</a>
-            
             <button class="laser-btn border border-red-600 bg-red-600/20 px-3 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-[9px] md:text-xs text-white gotg-font" id="navConnect">Connect Wallet</button>
             <button onclick="toggleLang()" id="langBtn" class="text-[9px] md:text-xs font-bold border border-white/20 px-2 py-1 md:px-3 md:py-1.5 rounded-md hover:bg-white/10 transition uppercase tracking-widest text-white">CN</button>
         </div>
@@ -54,7 +63,6 @@
             <span class="text-red-600 drop-shadow-[0_0_15px_rgba(230,0,18,0.4)]">To The Moon</span>
         </h1>
         <p class="max-w-2xl text-gray-400 text-sm md:text-lg mb-12 leading-relaxed px-4" id="heroDesc">Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.</p>
-        
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-10">
             <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="joinBtn">Join Community</a>
             <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="exploreBtn">Explore Ecosystem</a>
@@ -140,13 +148,21 @@
         </div>
     </section>
 
+    <section class="max-w-4xl mx-auto py-12 px-10 text-white">
+        <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-white">
+            <h3 class="gotg-font text-red-600 text-[10px] mb-4 text-white" id="disclaimerTitle">Disclaimer</h3>
+            <p class="text-gray-500 text-[9px] md:text-[11px] leading-relaxed" id="disclaimerText">
+                Trading cryptocurrencies involves significant risk...
+            </p>
+        </div>
+    </section>
+
     <footer class="py-16 border-t border-white/5 text-center bg-[#050505]">
         <div class="flex justify-center gap-8 md:gap-12 mb-8 px-6">
             <a href="https://x.com/otgdeficommunit" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font">Twitter</a>
             <a href="https://instagram.com/otgdeficommunity" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font">Instagram</a>
             <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font text-white">Linktree</a>
         </div>
-        <p id="disclaimerText" class="text-gray-600 text-[9px] px-10 mb-6 max-w-3xl mx-auto leading-relaxed">NFA / DYOR: All content provided is for informational purposes only...</p>
         <p class="text-gray-700 text-[9px] uppercase tracking-[0.2em]">© 2026 OTG DeFi Community. All systems functional.</p>
     </footer>
 
@@ -165,7 +181,8 @@
                 twitterBtn: 'Follow on X →', ogTitle: 'OG Passport NFT', ogSubTitle: 'Proof of Consensus',
                 ogDesc: 'The spiritual lighthouse for the early OTG community.',
                 ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
-                disclaimerText: 'NFA / DYOR: All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. OTG is not responsible for any financial losses.'
+                disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
+                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.'
             },
             cn: {
                 lang: 'EN', connect: '连接钱包', navGallery: '画廊', heroGallery: '浏览画廊 →',
@@ -180,7 +197,8 @@
                 twitterBtn: '关注推特 →', ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章，先遣印记',
                 ogDesc: '这是 OTG 社区早期的精神图腾。',
                 ogList1: '早期开拓者身份象征', ogList2: '未来生态权益预留', ogList3: '社区治理优先权',
-                disclaimerText: 'NFA / DYOR: 本网站所有内容仅供参考和教育目的，不构成财务、投资或法律建议。加密货币交易涉及重大风险，OTG 对任何损失概不负责。'
+                disclaimerTitle: '法律免责声明 (NFA / DYOR)',
+                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。'
             }
         };
 
@@ -209,23 +227,64 @@
             document.getElementById('ogList1').innerText = data.ogList1;
             document.getElementById('ogList2').innerText = data.ogList2;
             document.getElementById('ogList3').innerText = data.ogList3;
+            document.getElementById('disclaimerTitle').innerText = data.disclaimerTitle;
             document.getElementById('disclaimerText').innerText = data.disclaimerText;
             document.getElementById('twitterBtn').innerText = data.twitterBtn;
         }
         function toggleLang() { currentLang = currentLang === 'en' ? 'cn' : 'en'; localStorage.setItem('otg_lang', currentLang); updateContent(); }
         updateContent();
 
-        // Stars Logic
+        // Canvas Stars
         const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d'); let stars = [];
         function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; for (let i = 0; i < 400; i++) stars.push({ x: Math.random() * canvas.width - canvas.width / 2, y: Math.random() * canvas.height - canvas.height / 2, z: Math.random() * canvas.width, o: Math.random() }); }
         function update() { ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height / 2; stars.forEach(s => { s.z -= 2; if (s.z <= 0) s.z = canvas.width; const sx = (s.x * (canvas.width / s.z)) + cx, sy = (s.y * (canvas.width / s.z)) + cy, size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); }); requestAnimationFrame(update); }
         window.addEventListener('resize', init); init(); update();
 
-        // Logo Logic
-        const partnerCount = 12; const formats = ['png', 'svg', 'webp', 'jpg'];
-        function getLogoHTML(i) { return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner"></div>`; }
-        function generateLogos() { let row1 = '', row2 = ''; for (let i = 1; i <= partnerCount; i++) { if (i <= partnerCount / 2) row1 += getLogoHTML(i); else row2 += getLogoHTML(i); } document.getElementById('logo-track-1').innerHTML = row1 + row1; document.getElementById('logo-track-2').innerHTML = row2 + row2; }
-        function tryNextFormat(img) { const index = img.getAttribute('data-index'), fIndex = parseInt(img.getAttribute('data-format-index')) + 1; if (fIndex < formats.length) { img.setAttribute('data-format-index', fIndex); img.src = `partners/${index}.${formats[fIndex]}`; } else { img.onerror = null; img.src = `https://via.placeholder.com/150x50/333/fff?text=Partner+${index}`; } }
+        // 🎡 智能双排 Logo 逻辑 (支持无限扩展 & 自动控速)
+        const partnerCount = 33; // 👈 目前是 33 个 Logo
+        const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg'];
+        
+        function getLogoHTML(i) { 
+            return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner"></div>`; 
+        }
+        
+        function generateLogos() { 
+            let row1 = '', row2 = ''; 
+            let count1 = 0, count2 = 0;
+            
+            for (let i = 1; i <= partnerCount; i++) { 
+                if (i <= Math.ceil(partnerCount / 2)) {
+                    row1 += getLogoHTML(i);
+                    count1++;
+                } else {
+                    row2 += getLogoHTML(i);
+                    count2++;
+                }
+            } 
+            
+            const track1 = document.getElementById('logo-track-1');
+            const track2 = document.getElementById('logo-track-2');
+            
+            track1.innerHTML = row1 + row1; 
+            track2.innerHTML = row2 + row2; 
+            
+            // ⚡ 根据 Logo 数量动态计算滚动时间
+            track1.style.animationDuration = `${count1 * 2.5}s`;
+            track2.style.animationDuration = `${count2 * 2.8}s`; 
+        }
+        
+        function tryNextFormat(img) { 
+            const index = img.getAttribute('data-index');
+            let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
+            
+            if (formatIndex < formats.length) { 
+                img.setAttribute('data-format-index', formatIndex); 
+                img.src = `partners/${index}.${formats[formatIndex]}`; 
+            } else { 
+                img.parentElement.style.display = 'none'; 
+            } 
+        }
+        
         generateLogos();
     </script>
 </body>
