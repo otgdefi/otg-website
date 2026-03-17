@@ -10,30 +10,31 @@
         .glow-red { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
     </style>
 </head>
-<body class="selection:bg-red-600">
-    <nav class="flex justify-between items-center p-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/80 backdrop-blur-md z-50">
-        <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center font-bold italic">OTG</div>
-            <span class="text-xl font-black tracking-tighter uppercase">Off The Ground</span>
-        </div>
-        <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-sm hover:bg-red-600 hover:text-white transition">Connect Wallet</button>
-    </nav>
+<style>
+    .glass-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    .glass-card:hover {
+        border-color: #E60012;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(230, 0, 18, 0.2);
+    }
+</style>
 
-    <section class="py-20 px-6 flex flex-col items-center text-center">
-        <div class="relative mb-8">
-            <img src="OTG.png" alt="OTG Logo" class="w-48 h-48 drop-shadow-[0_0_30px_rgba(230,0,18,0.5)]">
+<section class="max-w-6xl mx-auto py-20 px-6">
+    <h2 class="text-3xl font-black mb-12 italic border-l-4 border-red-600 pl-4">THE 4 ENGINES</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card p-8 rounded-3xl">
+            <h3 class="text-red-500 font-bold mb-2 uppercase">DeFi</h3>
+            <p class="text-sm text-gray-400">Yield farming, protocols & liquidity strategies.</p>
         </div>
-        <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter uppercase italic">Off The Ground</h1>
-        <p class="max-w-2xl text-gray-400 text-lg mb-10 leading-relaxed">
-            助力每一位 Web3 探索者实现从 0 到 1 的财富起飞。<br>深耕 DeFi、GameFi、空投研判与 Meme 热潮。
-        </p>
-        <div class="flex gap-4">
-            <a href="https://linktr.ee/otgdeficommunity" class="bg-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:scale-105 transition glow-red">Join Community</a>
+        <div class="glass-card p-8 rounded-3xl">
+            <h3 class="text-red-500 font-bold mb-2 uppercase">Airdrop</h3>
+            <p class="text-sm text-gray-400">Pathways to zero-cost capital efficiency.</p>
         </div>
-    </section>
-
-    <footer class="py-20 border-t border-white/10 text-center">
-        <p class="text-gray-500 text-sm">© 2026 OTG (Off The Ground) DeFi Community.</p>
-    </footer>
-</body>
+        </div>
+</section>
 </html>
