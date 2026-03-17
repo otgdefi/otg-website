@@ -12,81 +12,23 @@
     
     <style>
         /* 基础重置与平滑滚动 */
-        body { 
-            background-color: #050505; 
-            color: white; 
-            margin: 0; 
-            font-family: 'Inter', sans-serif; 
-            scroll-behavior: smooth; 
-            -webkit-font-smoothing: antialiased; 
-            overflow-x: hidden; 
-        }
+        body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
         
         /* 🚀 银河护卫队风格字体 */
-        .gotg-font { 
-            font-family: 'Orbitron', sans-serif; 
-            text-transform: uppercase; 
-            letter-spacing: 0.1em; 
-            font-style: italic; 
-            transform: skewX(-2deg); 
-        }
+        .gotg-font { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-style: italic; transform: skewX(-2deg); }
 
         /* 🔴 激光扫描按钮 */
-        .laser-btn { 
-            position: relative; 
-            overflow: hidden; 
-            transition: all 0.3s ease; 
-            display: inline-block; 
-            z-index: 1;
-        }
-        .laser-btn::before { 
-            content: ''; 
-            position: absolute; 
-            top: 0; 
-            left: -100%; 
-            width: 50%; 
-            height: 100%; 
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent); 
-            transform: skewX(-25deg); 
-            animation: laser-scan 3s infinite; 
-            z-index: -1; 
-        }
-        @keyframes laser-scan { 
-            0% { left: -100%; } 
-            50% { left: 150%; } 
-            100% { left: 150%; } 
-        }
-        .laser-btn:hover { 
-            box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); 
-            transform: scale(1.05) skewX(-2deg); 
-        }
+        .laser-btn { position: relative; overflow: hidden; transition: all 0.3s ease; display: inline-block; z-index: 1; }
+        .laser-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent); transform: skewX(-25deg); animation: laser-scan 3s infinite; z-index: -1; }
+        @keyframes laser-scan { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
+        .laser-btn:hover { box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); transform: scale(1.05) skewX(-2deg); }
 
         /* 🌌 星空背景 */
-        #starfield { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            z-index: -1; 
-            background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); 
-        }
+        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
 
         /* 🔮 毛玻璃卡片 */
-        .glass-card { 
-            background: rgba(255, 255, 255, 0.02); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-        }
-        @media (min-width: 1024px) { 
-            .glass-card:hover { 
-                border-color: #E60012; 
-                transform: translateY(-10px); 
-                box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15), inset 0 0 20px rgba(230, 0, 18, 0.05); 
-            } 
-        }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15), inset 0 0 20px rgba(230, 0, 18, 0.05); } }
         
         /* 🎡 走马灯动画轨道 */
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
@@ -95,40 +37,13 @@
         .carousel-track-2 { display: flex; animation: scrollRight 18s linear infinite; width: max-content; }
         
         /* 🤝 合作伙伴 Logo 容器 */
-        .partner-logo { 
-            width: 130px; 
-            height: 65px; 
-            flex-shrink: 0; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            padding: 12px; 
-            margin: 0 12px; 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.05); 
-            border-radius: 14px; 
-            transition: all 0.4s ease; 
-        }
-        .partner-logo img { 
-            max-width: 100%; 
-            max-height: 100%; 
-            object-fit: contain; 
-            filter: brightness(0) invert(1); 
-            opacity: 0.5; 
-            transition: all 0.4s ease; 
-        }
-        .partner-logo:hover { 
-            background: rgba(230, 0, 18, 0.08); 
-            border-color: rgba(230, 0, 18, 0.3); 
-            transform: translateY(-5px) scale(1.05); 
-        }
-        .partner-logo:hover img { 
-            filter: brightness(1) invert(0); 
-            opacity: 1; 
-        }
+        .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; transition: all 0.4s ease; }
+        .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: all 0.4s ease; }
+        .partner-logo:hover { background: rgba(230, 0, 18, 0.08); border-color: rgba(230, 0, 18, 0.3); transform: translateY(-5px) scale(1.05); }
+        .partner-logo:hover img { filter: brightness(1) invert(0); opacity: 1; }
 
         /* 辅助类 */
-        #ecosystem, #feed, #partners, #og { scroll-margin-top: 100px; }
+        #ecosystem, #calendar, #feed, #partners, #og { scroll-margin-top: 100px; }
         #langBtn { min-width: 45px; text-align: center; }
     </style>
 </head>
@@ -200,6 +115,29 @@
                 <h3 class="text-lg font-black mb-4 gotg-font" id="engine4Title">Meme</h3>
                 <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="calendar" class="max-w-7xl mx-auto py-24 px-6 border-t border-white/5">
+        <div class="text-center mb-12">
+            <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[9px] font-bold tracking-widest mb-4 gotg-font" id="calendarLabel">Operations</div>
+            <h2 class="text-2xl md:text-4xl font-black mb-4 gotg-font text-white" id="calendarTitle">Event Horizon</h2>
+            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto" id="calendarDesc">
+                Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.
+            </p>
+        </div>
+        
+        <div class="w-full glass-card rounded-3xl p-2 md:p-4 overflow-hidden h-[600px] relative shadow-2xl">
+            <iframe
+                src="https://luma.com/embed/calendar/cal-on7JhqL0wqyVFFi/events"
+                width="100%"
+                height="100%"
+                frameborder="0"
+                style="border: transparent; border-radius: 1rem; background-color: transparent;"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+            ></iframe>
         </div>
     </section>
 
@@ -305,13 +243,14 @@
                 airdropDesc: 'Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.',
                 gamefiDesc: 'Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.',
                 memeDesc: 'Decoding social consensus and market psychology to identify high-velocity cultural assets.',
+                calendarLabel: 'Operations', calendarTitle: 'Event Horizon', calendarDesc: 'Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.',
                 commandLabel: 'Command Center', liveTitle: 'Live Intelligence', partnerTitle: 'Strategic Vanguard',
                 liveDesc: 'Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.',
                 twitterBtn: 'Follow on X →', ogTitle: 'OG Passport NFT', ogSubTitle: 'Proof of Consensus',
                 ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
                 ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
                 disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
-                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.',
+                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Research (DYOR). OTG DeFi Community is not responsible for any financial losses.',
                 engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme'
             },
             cn: {
@@ -322,6 +261,7 @@
                 airdropDesc: '精细化空投路径规划，拒绝无效交互，抢占早期发射红利。',
                 gamefiDesc: '探索 P2E 潜力项目，分析链游生态，布局 Web3 娱乐前沿。',
                 memeDesc: '敏锐捕捉市场情绪，洞察高爆发资产，玩转社区共识。',
+                calendarLabel: '行动代号', calendarTitle: '活动视界', calendarDesc: '加入我们即将到来的 AMA、线下见面会与独家 Alpha 闭门会。',
                 commandLabel: '指挥中心', liveTitle: '实时情报', partnerTitle: '战略合作伙伴',
                 liveDesc: '实时同步 OTG 指挥中心的最新讯号。关注我们的 X (Twitter)，不错过任何一次 Web3 发射红利。',
                 twitterBtn: '关注推特 →', ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章，先遣印记',
@@ -338,18 +278,28 @@
         function updateContent() {
             const data = i18n[currentLang];
             
-            for (const [id, text] of Object.entries(data)) {
+            // 包含日历相关的 ID
+            const elementsToUpdate = [
+                'langBtn', 'navConnect', 'navGallery', 'heroGallery', 'heroDesc', 
+                'joinBtn', 'exploreBtn', 'engineTitle', 'defiDesc', 'airdropDesc', 
+                'gamefiDesc', 'memeDesc', 'calendarLabel', 'calendarTitle', 'calendarDesc',
+                'commandLabel', 'liveTitle', 'liveDesc', 
+                'partnerTitle', 'ogTitle', 'ogSubTitle', 'ogDesc', 'ogList1', 
+                'ogList2', 'ogList3', 'disclaimerTitle', 'disclaimerText', 'twitterBtn',
+                'engine1Title', 'engine2Title', 'engine3Title', 'engine4Title'
+            ];
+
+            elementsToUpdate.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) {
-                    // 保护带特效按钮内的 span 结构，避免样式被覆盖
                     const span = el.querySelector('span.relative');
                     if (span) {
-                        span.innerText = text;
+                        span.innerText = data[id];
                     } else {
-                        el.innerText = text;
+                        el.innerText = data[id];
                     }
                 }
-            }
+            });
         }
 
         function toggleLang() { 
@@ -429,16 +379,13 @@
             const track1 = document.getElementById('logo-track-1'); 
             const track2 = document.getElementById('logo-track-2');
             
-            // 双倍拼接以实现无缝滚动
             track1.innerHTML = row1 + row1; 
             track2.innerHTML = row2 + row2; 
             
-            // 智能匀速计算
             track1.style.animationDuration = `${count1 * 2.5}s`; 
             track2.style.animationDuration = `${count2 * 2.8}s`; 
         }
         
-        // 全局暴露给 HTML 中的 onerror 使用
         window.tryNextFormat = function(img) { 
             const index = img.getAttribute('data-index'); 
             let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
@@ -447,7 +394,6 @@
                 img.setAttribute('data-format-index', formatIndex); 
                 img.src = `partners/${index}.${formats[formatIndex]}`; 
             } else { 
-                // 图片全格式加载失败时的兜底隐藏
                 img.parentElement.style.display = 'none'; 
             } 
         };
