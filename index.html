@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTG - Off The Ground | Web3 Community</title>
-    
     <link rel="icon" type="image/png" href="OTG.png">
     <link rel="apple-touch-icon" href="OTG.png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #0A0A0A; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .glow-red { box-shadow: 0 0 30px rgba(230, 0, 18, 0.3); }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass-card:hover {
             border-color: #E60012; transform: translateY(-10px);
@@ -28,6 +24,12 @@
         .partner-logo { width: 200px; height: 80px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 15px; filter: grayscale(100%); opacity: 0.4; transition: all 0.3s; }
         .partner-logo:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
         .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .og-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
     </style>
 </head>
 <body class="selection:bg-red-600">
@@ -35,11 +37,9 @@
     <nav class="flex justify-between items-center p-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/80 backdrop-blur-md z-50">
         <div class="flex items-center gap-3">
             <img src="OTG.png" alt="OTG Logo" class="w-8 h-8 drop-shadow-[0_0_10px_rgba(230,0,18,0.5)]">
-            <span class="text-xl font-black tracking-tighter uppercase hidden md:block text-white">Off The Ground</span>
+            <span class="text-xl font-black tracking-tighter uppercase hidden md:block">Off The Ground</span>
         </div>
-        <div class="flex gap-4">
-            <button class="border border-white/20 px-4 py-2 rounded-full font-bold text-xs hover:bg-white/10 transition text-white">Connect Wallet</button>
-        </div>
+        <div class="flex gap-4"><button class="border border-white/20 px-4 py-2 rounded-full font-bold text-xs hover:bg-white/10 transition">Connect Wallet</button></div>
     </nav>
 
     <section class="py-24 px-6 flex flex-col items-center text-center">
@@ -48,28 +48,23 @@
             <span class="bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent">Off The Ground,</span><br>
             <span class="text-red-600 drop-shadow-[0_0_20px_rgba(230,0,18,0.5)]">To The Moon</span>
         </h1>
-        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">助力 Web3 探索者实现从 0 到 1 的起飞。深耕 DeFi、GameFi、空投研判与 Meme 热潮。</p>
+        <p class="max-w-2xl text-gray-400 text-lg md:text-xl mb-10 leading-relaxed text-white">助力 Web3 探索者实现从 0 到 1 的起飞。深耕 DeFi、GameFi、空投研判与 Meme 热潮。</p>
         <div class="flex flex-wrap justify-center gap-4">
             <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="bg-red-600 px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 transition glow-red text-white">加入社区</a>
-            <a href="#ecosystem" class="border border-white/20 bg-white/5 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition text-white text-white">探索生态</a>
-        </div>
-    </section>
-
-    <section id="partners" class="py-16 border-t border-b border-white/5 bg-zinc-900/30 overflow-hidden text-white">
-        <div class="max-w-7xl mx-auto px-6 mb-10 text-center">
-            <h2 class="text-2xl font-black italic uppercase tracking-wider text-white">Strategic Vanguard</h2>
-        </div>
-        <div class="w-full relative">
-            <div id="logo-track" class="carousel-track"></div>
+            <a href="#ecosystem" class="border border-white/20 bg-white/5 px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition text-white">探索生态</a>
         </div>
     </section>
 
     <section id="ecosystem" class="max-w-7xl mx-auto py-24 px-6">
+        <div class="flex items-center gap-4 mb-16">
+            <h2 class="text-3xl font-black italic uppercase tracking-widest text-white">Core Engines</h2>
+            <div class="h-1 flex-grow bg-gradient-to-r from-red-600 to-transparent"></div>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="glass-card p-10 rounded-[2rem] text-left">
                 <div class="text-red-600 text-4xl mb-6">🚀</div>
                 <h3 class="text-2xl font-black mb-4 uppercase text-white">DeFi</h3>
-                <p class="text-gray-400 text-sm leading-relaxed text-white text-white">深度解析协议逻辑，挖掘可持续复利收益。</p>
+                <p class="text-gray-400 text-sm leading-relaxed text-white">深度解析协议逻辑，挖掘可持续复利收益。</p>
             </div>
             <div class="glass-card p-10 rounded-[2rem] text-left">
                 <div class="text-red-600 text-4xl mb-6">🪂</div>
@@ -84,13 +79,49 @@
             <div class="glass-card p-10 rounded-[2rem] text-left">
                 <div class="text-red-600 text-4xl mb-6">💎</div>
                 <h3 class="text-2xl font-black mb-4 uppercase text-white text-white">Meme</h3>
-                <p class="text-gray-400 text-sm leading-relaxed text-white text-white text-white">敏锐捕捉市场情绪，洞察高爆发资产。</p>
+                <p class="text-gray-400 text-sm leading-relaxed text-white text-white">敏锐捕捉市场情绪，洞察高爆发资产。</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-10 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-8 mb-4">
+    <section id="partners" class="py-24 border-t border-b border-white/5 bg-zinc-900/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 mb-10 text-center text-white text-white">
+            <h2 class="text-2xl font-black italic uppercase tracking-wider text-white">Strategic Vanguard</h2>
+        </div>
+        <div class="w-full relative">
+            <div id="logo-track" class="carousel-track"></div>
+        </div>
+    </section>
+
+    <section id="og" class="py-32 bg-gradient-to-b from-transparent via-red-950/10 to-transparent overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-xs font-bold tracking-widest mb-6 uppercase bg-red-600/5">Genesis Assets</div>
+            <h2 class="text-4xl md:text-5xl font-black mb-12 italic uppercase text-white">OG Passport NFT</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-3xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative w-72 h-96 bg-zinc-900 rounded-3xl border border-white/10 flex flex-col items-center justify-center overflow-hidden">
+                        <div class="og-shimmer absolute inset-0 opacity-30"></div>
+                        <img src="OTG.png" alt="OG Logo" class="w-32 h-32 opacity-20 grayscale mb-4">
+                        <div class="text-red-600 font-mono text-xl font-bold tracking-[0.5em] mb-2 uppercase">Vanguard</div>
+                        <div class="text-white/30 text-xs font-mono uppercase text-white">Limited Consensus Edition</div>
+                    </div>
+                </div>
+                <div class="md:text-left max-w-md">
+                    <h3 class="text-2xl font-bold mb-4 text-white">共识勋章，先遣印记</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6 leading-relaxed">这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。</p>
+                    <ul class="text-sm space-y-3 mb-8">
+                        <li class="flex items-center gap-2 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> 早期开拓者身份象征</li>
+                        <li class="flex items-center gap-2 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> 未来生态权益预留</li>
+                        <li class="flex items-center gap-2 text-gray-400"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> 社区治理优先权</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 mb-4 text-white text-white">
             <a href="https://x.com/otgdeficommunit" target="_blank" class="text-gray-400 hover:text-red-500 text-sm">Twitter</a>
             <a href="https://instagram.com/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-sm">Instagram</a>
             <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="text-gray-400 hover:text-red-500 text-sm">Linktree</a>
@@ -101,16 +132,30 @@
     <script>
         const track = document.getElementById('logo-track');
         const partnerCount = 8; 
+        const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg']; 
 
         function generateLogos() {
             let logosHTML = '';
             for (let i = 1; i <= partnerCount; i++) {
                 logosHTML += `
                     <div class="partner-logo">
-                        <img src="partners/${i}.png" onerror="this.src='/api/placeholder/180/60?text=Logo+${i}'" alt="Partner ${i}">
+                        <img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner ${i}">
                     </div>`;
             }
             track.innerHTML = logosHTML + logosHTML;
+        }
+
+        function tryNextFormat(img) {
+            const index = img.getAttribute('data-index');
+            let formatIndex = parseInt(img.getAttribute('data-format-index'));
+            formatIndex++;
+            if (formatIndex < formats.length) {
+                img.setAttribute('data-format-index', formatIndex);
+                img.src = `partners/${index}.${formats[formatIndex]}`;
+            } else {
+                img.onerror = null; 
+                img.src = `/api/placeholder/180/60?text=Partner+${index}`;
+            }
         }
         generateLogos();
     </script>
