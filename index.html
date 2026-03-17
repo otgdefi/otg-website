@@ -8,34 +8,126 @@
     <link rel="apple-touch-icon" href="OTG.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <style>
-        body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        /* 基础重置与平滑滚动 */
+        body { 
+            background-color: #050505; 
+            color: white; 
+            margin: 0; 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden; 
+        }
         
-        .gotg-font { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-style: italic; transform: skewX(-2deg); }
+        /* 🚀 银河护卫队风格字体 */
+        .gotg-font { 
+            font-family: 'Orbitron', sans-serif; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            font-style: italic; 
+            transform: skewX(-2deg); 
+        }
 
-        .laser-btn { position: relative; overflow: hidden; transition: all 0.3s ease; display: inline-block; }
-        .laser-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent); transform: skewX(-25deg); animation: laser-scan 3s infinite; }
-        @keyframes laser-scan { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
-        .laser-btn:hover { box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); transform: scale(1.05) skewX(-2deg); }
+        /* 🔴 激光扫描按钮 */
+        .laser-btn { 
+            position: relative; 
+            overflow: hidden; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            z-index: 1;
+        }
+        .laser-btn::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -100%; 
+            width: 50%; 
+            height: 100%; 
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent); 
+            transform: skewX(-25deg); 
+            animation: laser-scan 3s infinite; 
+            z-index: -1; /* 确保激光在文字下方 */
+        }
+        @keyframes laser-scan { 
+            0% { left: -100%; } 
+            50% { left: 150%; } 
+            100% { left: 150%; } 
+        }
+        .laser-btn:hover { 
+            box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); 
+            transform: scale(1.05) skewX(-2deg); 
+        }
 
-        #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15); } }
+        /* 🌌 星空背景 */
+        #starfield { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+            background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); 
+        }
+
+        /* 🔮 毛玻璃卡片 */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        @media (min-width: 1024px) { 
+            .glass-card:hover { 
+                border-color: #E60012; 
+                transform: translateY(-10px); 
+                box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15), inset 0 0 20px rgba(230, 0, 18, 0.05); 
+            } 
+        }
         
-        /* 🎡 双排走马灯动画 */
+        /* 🎡 走马灯动画轨道 */
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-        
         .carousel-track-1 { display: flex; animation: scrollLeft 15s linear infinite; width: max-content; }
         .carousel-track-2 { display: flex; animation: scrollRight 18s linear infinite; width: max-content; }
         
-        .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; transition: all 0.4s ease; }
-        .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: all 0.4s ease; }
-        .partner-logo:hover { background: rgba(230, 0, 18, 0.08); border-color: rgba(230, 0, 18, 0.3); transform: translateY(-5px) scale(1.05); }
-        .partner-logo:hover img { filter: brightness(1) invert(0); opacity: 1; }
+        /* 🤝 合作伙伴 Logo 容器 */
+        .partner-logo { 
+            width: 130px; 
+            height: 65px; 
+            flex-shrink: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 12px; 
+            margin: 0 12px; 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            border-radius: 14px; 
+            transition: all 0.4s ease; 
+        }
+        .partner-logo img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            filter: brightness(0) invert(1); 
+            opacity: 0.5; 
+            transition: all 0.4s ease; 
+        }
+        .partner-logo:hover { 
+            background: rgba(230, 0, 18, 0.08); 
+            border-color: rgba(230, 0, 18, 0.3); 
+            transform: translateY(-5px) scale(1.05); 
+        }
+        .partner-logo:hover img { 
+            filter: brightness(1) invert(0); 
+            opacity: 1; 
+        }
 
+        /* 辅助类 */
         #ecosystem, #feed, #partners, #og { scroll-margin-top: 100px; }
         #langBtn { min-width: 45px; text-align: center; }
     </style>
@@ -51,22 +143,34 @@
         </div>
         <div class="flex items-center gap-3 md:gap-4">
             <a href="gallery.html" class="hidden sm:block text-[9px] md:text-xs font-bold text-gray-400 hover:text-white transition uppercase tracking-widest gotg-font" id="navGallery">Gallery</a>
-            <button class="laser-btn border border-red-600 bg-red-600/20 px-3 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-[9px] md:text-xs text-white gotg-font" id="navConnect">Connect Wallet</button>
+            <button class="laser-btn border border-red-600 bg-red-600/20 px-3 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-[9px] md:text-xs text-white gotg-font" id="navConnect">
+                <span class="relative z-10">Connect Wallet</span>
+            </button>
             <button onclick="toggleLang()" id="langBtn" class="text-[9px] md:text-xs font-bold border border-white/20 px-2 py-1 md:px-3 md:py-1.5 rounded-md hover:bg-white/10 transition uppercase tracking-widest text-white">CN</button>
         </div>
     </nav>
 
     <section class="py-20 md:py-36 px-6 flex flex-col items-center text-center" id="hero">
-        <div class="relative mb-8 md:mb-12"><img src="OTG.png" alt="OTG Logo" class="w-28 h-28 md:w-40 md:h-40 drop-shadow-[0_0_40px_rgba(230,0,18,0.5)] animate-pulse"></div>
+        <div class="relative mb-8 md:mb-12">
+            <img src="OTG.png" alt="OTG Logo" class="w-28 h-28 md:w-40 md:h-40 drop-shadow-[0_0_40px_rgba(230,0,18,0.5)] animate-pulse">
+        </div>
         <h1 class="text-3xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1] gotg-font">
             <span class="bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">Off The Ground</span><br>
             <span class="text-red-600 drop-shadow-[0_0_15px_rgba(230,0,18,0.4)]">To The Moon</span>
         </h1>
-        <p class="max-w-2xl text-gray-400 text-sm md:text-lg mb-12 leading-relaxed px-4" id="heroDesc">Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.</p>
+        <p class="max-w-2xl text-gray-400 text-sm md:text-lg mb-12 leading-relaxed px-4" id="heroDesc">
+            Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.
+        </p>
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-10">
-            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="joinBtn">Join Community</a>
-            <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="exploreBtn">Explore Ecosystem</a>
-            <a href="gallery.html" class="border border-transparent hover:border-white/20 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base text-gray-400 hover:text-white transition text-center gotg-font w-full sm:w-auto" id="heroGallery">View Gallery →</a>
+            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="joinBtn">
+                <span class="relative z-10">Join Community</span>
+            </a>
+            <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="exploreBtn">
+                <span class="relative z-10">Explore Ecosystem</span>
+            </a>
+            <a href="gallery.html" class="border border-transparent hover:border-white/20 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base text-gray-400 hover:text-white transition text-center gotg-font w-full sm:w-auto" id="heroGallery">
+                View Gallery →
+            </a>
         </div>
     </section>
 
@@ -76,20 +180,38 @@
             <div class="h-[1px] flex-grow bg-gradient-to-r from-red-600 to-transparent opacity-20"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div class="glass-card p-8 rounded-[2rem]"><div class="text-red-600 text-2xl mb-6">🚀</div><h3 class="text-lg font-black mb-4 gotg-font">DeFi</h3><p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="defiDesc">Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.</p></div>
-            <div class="glass-card p-8 rounded-[2rem]"><div class="text-red-600 text-2xl mb-6">🪂</div><h3 class="text-lg font-black mb-4 gotg-font">Airdrop</h3><p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="airdropDesc">Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.</p></div>
-            <div class="glass-card p-8 rounded-[2rem]"><div class="text-red-600 text-2xl mb-6">🎮</div><h3 class="text-lg font-black mb-4 gotg-font">GameFi</h3><p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="gamefiDesc">Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.</p></div>
-            <div class="glass-card p-8 rounded-[2rem]"><div class="text-red-600 text-2xl mb-6">💎</div><h3 class="text-lg font-black mb-4 gotg-font">Meme</h3><p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p></div>
+            <div class="glass-card p-8 rounded-[2rem]">
+                <div class="text-red-600 text-2xl mb-6">🚀</div>
+                <h3 class="text-lg font-black mb-4 gotg-font">DeFi</h3>
+                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="defiDesc">Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2rem]">
+                <div class="text-red-600 text-2xl mb-6">🪂</div>
+                <h3 class="text-lg font-black mb-4 gotg-font">Airdrop</h3>
+                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="airdropDesc">Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2rem]">
+                <div class="text-red-600 text-2xl mb-6">🎮</div>
+                <h3 class="text-lg font-black mb-4 gotg-font">GameFi</h3>
+                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="gamefiDesc">Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.</p>
+            </div>
+            <div class="glass-card p-8 rounded-[2rem]">
+                <div class="text-red-600 text-2xl mb-6">💎</div>
+                <h3 class="text-lg font-black mb-4 gotg-font">Meme</h3>
+                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p>
+            </div>
         </div>
     </section>
 
     <section id="partners" class="py-20 border-t border-b border-white/5 bg-zinc-900/10 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 mb-12 text-center"><h2 class="text-lg md:text-2xl font-black gotg-font opacity-80" id="partnerTitle">Strategic Vanguard</h2></div>
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
+            <h2 class="text-lg md:text-2xl font-black gotg-font opacity-80" id="partnerTitle">Strategic Vanguard</h2>
+        </div>
         <div class="w-full relative space-y-8">
             <div class="carousel-track-1" id="logo-track-1"></div>
             <div class="carousel-track-2" id="logo-track-2"></div>
-            <div class="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
-            <div class="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
+            <div class="absolute inset-y-0 left-0 w-20 md:w-40 bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-20 md:w-40 bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
         </div>
     </section>
 
@@ -98,7 +220,7 @@
             <div class="lg:w-1/3">
                 <div class="inline-block px-3 py-1 border border-red-600/50 rounded-full text-red-500 text-[9px] font-bold tracking-widest mb-4 gotg-font" id="commandLabel">Command Center</div>
                 <h2 class="text-2xl md:text-3xl font-black mb-6 gotg-font" id="liveTitle">Live Intelligence</h2>
-                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8" id="liveDesc">Real-time data synchronization with OTG Command.</p>
+                <p class="text-gray-400 text-sm md:text-base leading-relaxed mb-8" id="liveDesc">Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.</p>
                 <div class="flex items-center gap-2 text-emerald-500 font-bold text-[10px] mb-8 uppercase tracking-widest">
                     <span class="relative flex h-2.5 w-2.5">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -106,11 +228,13 @@
                     </span>
                     SYSTEM ONLINE
                 </div>
-                <a href="https://twitter.com/intent/follow?screen_name=otgdeficommunit" target="_blank" class="laser-btn border border-white/20 bg-white/5 px-6 py-3 rounded-xl text-[10px] font-bold transition gotg-font text-white" id="twitterBtn">Follow on X →</a>
+                <a href="https://twitter.com/intent/follow?screen_name=otgdeficommunit" target="_blank" class="laser-btn border border-white/20 bg-white/5 px-6 py-3 rounded-xl text-[10px] font-bold transition gotg-font text-white" id="twitterBtn">
+                    <span class="relative z-10">Follow on X →</span>
+                </a>
             </div>
             <div class="w-full lg:w-2/3 glass-card rounded-3xl p-1 overflow-hidden h-[450px] relative">
                 <div class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/50 -z-10">
-                    <img src="OTG.png" class="w-12 h-12 opacity-20 mb-4" alt="">
+                    <img src="OTG.png" class="w-12 h-12 opacity-20 mb-4" alt="OTG Logo">
                     <p class="text-xs text-gray-500 uppercase tracking-widest">Connecting to X Network...</p>
                 </div>
                 <div id="twitter-container">
@@ -127,12 +251,11 @@
             <h2 class="text-2xl md:text-4xl font-black mb-16 gotg-font" id="ogTitle">OG Passport NFT</h2>
             
             <div class="flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16">
-                
                 <div class="relative group cursor-pointer w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
                     <div class="absolute -inset-2 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-70 transition duration-1000"></div>
                     
                     <div class="relative w-full aspect-video bg-black rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-                        <video autoplay loop muted playsinline webkit-playsinline poster="OTG.png" class="w-full h-full object-cover">
+                        <video autoplay loop muted playsinline webkit-playsinline poster="OTG.png" class="w-full h-full object-cover object-center transform scale-110">
                             <source src="og-passport.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -144,9 +267,9 @@
                     <h3 class="text-lg md:text-2xl font-bold mb-5 gotg-font" id="ogSubTitle">Proof of Consensus</h3>
                     <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-8" id="ogDesc">The spiritual lighthouse for the early OTG community.</p>
                     <ul class="text-[11px] md:text-sm space-y-4 text-gray-400">
-                        <li><span id="ogList1">Founding Adopter Status</span></li>
-                        <li><span id="ogList2">Priority Ecosystem Access</span></li>
-                        <li><span id="ogList3">Governance Participation</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList1">Founding Adopter Status</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList2">Priority Ecosystem Access</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList3">Governance Participation</span></li>
                     </ul>
                 </div>
             </div>
@@ -155,7 +278,7 @@
 
     <section class="max-w-4xl mx-auto py-12 px-10 text-white">
         <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-white">
-            <h3 class="gotg-font text-red-600 text-[10px] mb-4 text-white" id="disclaimerTitle">Disclaimer</h3>
+            <h3 class="gotg-font text-red-600 text-[10px] mb-4" id="disclaimerTitle">Disclaimer</h3>
             <p class="text-gray-500 text-[9px] md:text-[11px] leading-relaxed" id="disclaimerText">
                 Trading cryptocurrencies involves significant risk...
             </p>
@@ -172,6 +295,7 @@
     </footer>
 
     <script>
+        // 🌍 1. 双语言配置
         const i18n = {
             en: {
                 lang: 'CN', connect: 'Connect Wallet', navGallery: 'Gallery', heroGallery: 'View Gallery →',
@@ -208,61 +332,137 @@
         };
 
         let currentLang = localStorage.getItem('otg_lang') || 'en';
+        
         function updateContent() {
             const data = i18n[currentLang];
-            document.getElementById('langBtn').innerText = data.lang;
-            document.getElementById('navConnect').innerText = data.connect;
-            document.getElementById('navGallery').innerText = data.navGallery;
-            document.getElementById('heroGallery').innerText = data.heroGallery;
-            document.getElementById('heroDesc').innerText = data.heroDesc;
-            document.getElementById('joinBtn').innerText = data.joinBtn;
-            document.getElementById('exploreBtn').innerText = data.exploreBtn;
-            document.getElementById('engineTitle').innerText = data.engineTitle;
-            document.getElementById('defiDesc').innerText = data.defiDesc;
-            document.getElementById('airdropDesc').innerText = data.airdropDesc;
-            document.getElementById('gamefiDesc').innerText = data.gamefiDesc;
-            document.getElementById('memeDesc').innerText = data.memeDesc;
-            document.getElementById('commandLabel').innerText = data.commandLabel;
-            document.getElementById('liveTitle').innerText = data.liveTitle;
-            document.getElementById('liveDesc').innerText = data.liveDesc;
-            document.getElementById('partnerTitle').innerText = data.partnerTitle;
-            document.getElementById('ogTitle').innerText = data.ogTitle;
-            document.getElementById('ogSubTitle').innerText = data.ogSubTitle;
-            document.getElementById('ogDesc').innerText = data.ogDesc;
-            document.getElementById('ogList1').innerText = data.ogList1;
-            document.getElementById('ogList2').innerText = data.ogList2;
-            document.getElementById('ogList3').innerText = data.ogList3;
-            document.getElementById('disclaimerTitle').innerText = data.disclaimerTitle;
-            document.getElementById('disclaimerText').innerText = data.disclaimerText;
-            document.getElementById('twitterBtn').innerText = data.twitterBtn;
+            
+            // 批量更新文本节点
+            const elementsToUpdate = [
+                'langBtn', 'navConnect', 'navGallery', 'heroGallery', 'heroDesc', 
+                'joinBtn', 'exploreBtn', 'engineTitle', 'defiDesc', 'airdropDesc', 
+                'gamefiDesc', 'memeDesc', 'commandLabel', 'liveTitle', 'liveDesc', 
+                'partnerTitle', 'ogTitle', 'ogSubTitle', 'ogDesc', 'ogList1', 
+                'ogList2', 'ogList3', 'disclaimerTitle', 'disclaimerText', 'twitterBtn'
+            ];
+
+            elementsToUpdate.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    // 保护带特效按钮内的 span 结构
+                    if (el.querySelector('span.relative')) {
+                        el.querySelector('span.relative').innerText = data[id];
+                    } else {
+                        el.innerText = data[id];
+                    }
+                }
+            });
         }
-        function toggleLang() { currentLang = currentLang === 'en' ? 'cn' : 'en'; localStorage.setItem('otg_lang', currentLang); updateContent(); }
-        updateContent();
 
-        // Canvas Stars
-        const canvas = document.getElementById('starfield'); const ctx = canvas.getContext('2d'); let stars = [];
-        function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; for (let i = 0; i < 400; i++) stars.push({ x: Math.random() * canvas.width - canvas.width / 2, y: Math.random() * canvas.height - canvas.height / 2, z: Math.random() * canvas.width, o: Math.random() }); }
-        function update() { ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2, cy = canvas.height / 2; stars.forEach(s => { s.z -= 2; if (s.z <= 0) s.z = canvas.width; const sx = (s.x * (canvas.width / s.z)) + cx, sy = (s.y * (canvas.width / s.z)) + cy, size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); }); requestAnimationFrame(update); }
-        window.addEventListener('resize', init); init(); update();
+        function toggleLang() { 
+            currentLang = currentLang === 'en' ? 'cn' : 'en'; 
+            localStorage.setItem('otg_lang', currentLang); 
+            updateContent(); 
+        }
+        
+        // 页面加载时初始化语言
+        document.addEventListener('DOMContentLoaded', updateContent);
 
-        // Logo Logic
+
+        // 🌌 2. 星空引擎逻辑
+        const canvas = document.getElementById('starfield'); 
+        const ctx = canvas.getContext('2d'); 
+        let stars = [];
+
+        function initStars() { 
+            canvas.width = window.innerWidth; 
+            canvas.height = window.innerHeight; 
+            stars = []; 
+            for (let i = 0; i < 400; i++) {
+                stars.push({ 
+                    x: Math.random() * canvas.width - canvas.width / 2, 
+                    y: Math.random() * canvas.height - canvas.height / 2, 
+                    z: Math.random() * canvas.width, 
+                    o: Math.random() 
+                }); 
+            }
+        }
+
+        function updateStars() { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+            const cx = canvas.width / 2;
+            const cy = canvas.height / 2; 
+            
+            stars.forEach(s => { 
+                s.z -= 2; 
+                if (s.z <= 0) s.z = canvas.width; 
+                
+                const sx = (s.x * (canvas.width / s.z)) + cx;
+                const sy = (s.y * (canvas.width / s.z)) + cy;
+                const size = (1 - s.z / canvas.width) * 2; 
+                
+                ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; 
+                ctx.beginPath(); 
+                ctx.arc(sx, sy, size, 0, Math.PI * 2); 
+                ctx.fill(); 
+            }); 
+            requestAnimationFrame(updateStars); 
+        }
+
+        window.addEventListener('resize', initStars); 
+        initStars(); 
+        updateStars();
+
+
+        // 🎡 3. 动态合作伙伴 Logo 引擎
         const partnerCount = 33; 
         const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg'];
         
-        function getLogoHTML(i) { return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="Partner"></div>`; }
+        function getLogoHTML(i) { 
+            return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="OTG Partner"></div>`; 
+        }
+        
         function generateLogos() { 
-            let row1 = '', row2 = ''; let count1 = 0, count2 = 0;
-            for (let i = 1; i <= partnerCount; i++) { if (i <= Math.ceil(partnerCount / 2)) { row1 += getLogoHTML(i); count1++; } else { row2 += getLogoHTML(i); count2++; } } 
-            const track1 = document.getElementById('logo-track-1'); const track2 = document.getElementById('logo-track-2');
-            track1.innerHTML = row1 + row1; track2.innerHTML = row2 + row2; 
-            track1.style.animationDuration = `${count1 * 2.5}s`; track2.style.animationDuration = `${count2 * 2.8}s`; 
+            let row1 = '', row2 = ''; 
+            let count1 = 0, count2 = 0;
+            
+            for (let i = 1; i <= partnerCount; i++) { 
+                if (i <= Math.ceil(partnerCount / 2)) { 
+                    row1 += getLogoHTML(i); 
+                    count1++; 
+                } else { 
+                    row2 += getLogoHTML(i); 
+                    count2++; 
+                } 
+            } 
+            
+            const track1 = document.getElementById('logo-track-1'); 
+            const track2 = document.getElementById('logo-track-2');
+            
+            // 双倍拼接以实现无缝滚动
+            track1.innerHTML = row1 + row1; 
+            track2.innerHTML = row2 + row2; 
+            
+            // 智能匀速计算
+            track1.style.animationDuration = `${count1 * 2.5}s`; 
+            track2.style.animationDuration = `${count2 * 2.8}s`; 
         }
-        function tryNextFormat(img) { 
-            const index = img.getAttribute('data-index'); let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
-            if (formatIndex < formats.length) { img.setAttribute('data-format-index', formatIndex); img.src = `partners/${index}.${formats[formatIndex]}`; } 
-            else { img.parentElement.style.display = 'none'; } 
-        }
-        generateLogos();
+        
+        // 全局暴露给 HTML 中的 onerror 使用
+        window.tryNextFormat = function(img) { 
+            const index = img.getAttribute('data-index'); 
+            let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
+            
+            if (formatIndex < formats.length) { 
+                img.setAttribute('data-format-index', formatIndex); 
+                img.src = `partners/${index}.${formats[formatIndex]}`; 
+            } else { 
+                // 图片全格式加载失败时的兜底隐藏
+                img.parentElement.style.display = 'none'; 
+            } 
+        };
+        
+        // 执行 Logo 加载
+        document.addEventListener('DOMContentLoaded', generateLogos);
     </script>
 </body>
 </html>
