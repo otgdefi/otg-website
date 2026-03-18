@@ -401,5 +401,28 @@
         
         document.addEventListener('DOMContentLoaded', generateLogos);
     </script>
+    <audio id="bgm" loop>
+  <source src="OTG-BGM.mp3" type="audio/mpeg">
+  您的浏览器不支持音频播放。
+</audio>
+
+<button onclick="toggleMusic()" id="musicBtn" style="position: fixed; bottom: 20px; right: 20px; z-index: 999; padding: 10px; border-radius: 50%; cursor: pointer;">
+  🎵 播放音乐
+</button>
+
+<script>
+  var audio = document.getElementById("bgm");
+  var btn = document.getElementById("musicBtn");
+
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      btn.innerHTML = "⏸️ 暂停音乐";
+    } else {
+      audio.pause();
+      btn.innerHTML = "🎵 播放音乐";
+    }
+  }
+</script>
 </body>
 </html>
