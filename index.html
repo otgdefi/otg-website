@@ -11,240 +11,243 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* 基础重置与平滑滚动 */
         body { background-color: #050505; color: white; margin: 0; font-family: 'Inter', sans-serif; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-        
-        /* 🚀 银河护卫队风格字体 */
         .gotg-font { font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.1em; font-style: italic; transform: skewX(-2deg); }
-
-        /* 🔴 激光扫描按钮 */
         .laser-btn { position: relative; overflow: hidden; transition: all 0.3s ease; display: inline-block; z-index: 1; }
         .laser-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent); transform: skewX(-25deg); animation: laser-scan 3s infinite; z-index: -1; }
         @keyframes laser-scan { 0% { left: -100%; } 50% { left: 150%; } 100% { left: 150%; } }
         .laser-btn:hover { box-shadow: 0 0 20px rgba(230, 0, 18, 0.6); transform: scale(1.05) skewX(-2deg); }
-
-        /* 🌌 星空背景 */
         #starfield { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%); }
-
-        /* 🔮 毛玻璃卡片 */
-        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15), inset 0 0 20px rgba(230, 0, 18, 0.05); } }
-        
-        /* 🎡 走马灯动画轨道 */
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @media (min-width: 1024px) { .glass-card:hover { border-color: #E60012; transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 18, 0.15); } }
         @keyframes scrollLeft { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scrollRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         .carousel-track-1 { display: flex; animation: scrollLeft 15s linear infinite; width: max-content; }
         .carousel-track-2 { display: flex; animation: scrollRight 18s linear infinite; width: max-content; }
-        
-        /* 🤝 合作伙伴 Logo 容器 */
-        .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; transition: all 0.4s ease; }
-        .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: all 0.4s ease; }
-        .partner-logo:hover { background: rgba(230, 0, 18, 0.08); border-color: rgba(230, 0, 18, 0.3); transform: translateY(-5px) scale(1.05); }
+        .partner-logo { width: 130px; height: 65px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; padding: 12px; margin: 0 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; }
+        .partner-logo img { max-width: 100%; max-height: 100%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5; transition: 0.4s; }
         .partner-logo:hover img { filter: brightness(1) invert(0); opacity: 1; }
-
-        /* 辅助类 */
         #ecosystem, #feed, #calendar, #partners, #og { scroll-margin-top: 100px; }
-        #langBtn { min-width: 45px; text-align: center; }
     </style>
 </head>
-<body class="selection:bg-red-600">
+<body>
 
     <canvas id="starfield"></canvas>
 
-    <nav class="flex justify-between items-center px-6 py-4 md:px-12 md:py-5 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/90 backdrop-blur-md z-50">
-        <div class="flex items-center gap-2 md:gap-3">
-            <img src="OTG.png" alt="OTG Logo" class="w-8 h-8 md:w-9 md:h-9 drop-shadow-[0_0_10px_rgba(230,0,18,0.5)]">
-            <span class="text-base md:text-lg font-black tracking-tighter uppercase gotg-font">Off The Ground</span>
+    <nav class="flex justify-between items-center px-6 py-4 md:px-12 sticky top-0 bg-[#0A0A0A]/90 backdrop-blur-md z-50 border-b border-white/10">
+        <div class="flex items-center gap-2">
+            <img src="OTG.png" alt="Logo" class="w-8 h-8 drop-shadow-[0_0_10px_rgba(230,0,18,0.5)]">
+            <span class="text-base font-black gotg-font">Off The Ground</span>
         </div>
-        <div class="flex items-center gap-3 md:gap-4">
-            <a href="gallery.html" class="hidden sm:block text-[9px] md:text-xs font-bold text-gray-400 hover:text-white transition uppercase tracking-widest gotg-font" id="navGallery">Gallery</a>
-            <button class="laser-btn border border-red-600 bg-red-600/20 px-3 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-[9px] md:text-xs text-white gotg-font" id="navConnect">
+        <div class="flex items-center gap-4">
+            <a href="gallery.html" class="hidden sm:block text-xs font-bold text-gray-400 hover:text-white transition gotg-font" id="navGallery">Gallery</a>
+            <button class="laser-btn border border-red-600 bg-red-600/20 px-4 py-2 rounded-full font-bold text-xs gotg-font" id="navConnect">
                 <span class="relative z-10">Connect Wallet</span>
             </button>
-            <button onclick="toggleLang()" id="langBtn" class="text-[9px] md:text-xs font-bold border border-white/20 px-2 py-1 md:px-3 md:py-1.5 rounded-md hover:bg-white/10 transition uppercase tracking-widest text-white">CN</button>
+            <button onclick="toggleLang()" id="langBtn" class="text-xs font-bold border border-white/20 px-3 py-1.5 rounded-md hover:bg-white/10 text-white">CN</button>
         </div>
     </nav>
 
-    <button onclick="toggleMusic()" id="musicBtn" class="fixed bottom-5 right-5 z-[999] bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] px-4 py-2 rounded-full font-bold gotg-font hover:bg-white/10 transition group">
+    <button onclick="toggleMusic()" id="musicBtn" class="fixed bottom-5 right-5 z-[999] bg-black/40 backdrop-blur-md border border-white/10 text-white text-[10px] px-4 py-2 rounded-full font-bold gotg-font hover:bg-white/10 transition">
         <span id="musicBtnText">🎵 Play BGM</span>
     </button>
+    <audio id="bgm" loop><source src="OTG-BGM.mp3" type="audio/mpeg"></audio>
 
-    <audio id="bgm" loop>
-        <source src="OTG-BGM.mp3" type="audio/mpeg">
-        您的浏览器不支持音频播放。
-    </audio>
-
-    <section class="py-20 md:py-36 px-6 flex flex-col items-center text-center" id="hero">
-        <div class="relative mb-8 md:mb-12">
-            <img src="OTG.png" alt="OTG Logo" class="w-28 h-28 md:w-40 md:h-40 drop-shadow-[0_0_40px_rgba(230,0,18,0.5)] animate-pulse">
-        </div>
-        <h1 class="text-3xl md:text-6xl lg:text-7xl font-black mb-8 leading-[1.1] gotg-font">
+    <section class="py-24 px-6 flex flex-col items-center text-center">
+        <img src="OTG.png" class="w-32 h-32 md:w-40 md:h-40 mb-8 animate-pulse drop-shadow-[0_0_40px_rgba(230,0,18,0.5)]">
+        <h1 class="text-4xl md:text-7xl font-black mb-8 gotg-font leading-tight">
             <span class="bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent">Off The Ground</span><br>
             <span class="text-red-600 drop-shadow-[0_0_15px_rgba(230,0,18,0.4)]">To The Moon</span>
         </h1>
-        <p class="max-w-2xl text-gray-400 text-sm md:text-lg mb-12 leading-relaxed px-4" id="heroDesc">
-            Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full sm:w-auto px-10">
-            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="joinBtn">
-                <span class="relative z-10">Join Community</span>
-            </a>
-            <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-8 py-3.5 rounded-xl font-bold text-base md:text-lg text-center text-white gotg-font w-full sm:w-auto" id="exploreBtn">
-                <span class="relative z-10">Explore Ecosystem</span>
-            </a>
-            <a href="gallery.html" class="border border-transparent hover:border-white/20 px-8 py-3.5 rounded-xl font-bold text-sm md:text-base text-gray-400 hover:text-white transition text-center gotg-font w-full sm:w-auto" id="heroGallery">
-                View Gallery →
-            </a>
+        <p class="max-w-2xl text-gray-400 text-sm md:text-lg mb-12" id="heroDesc">Architecting the future of Web3 exploration.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="laser-btn bg-red-600 px-8 py-3.5 rounded-xl font-bold gotg-font" id="joinBtn">Join Community</a>
+            <a href="#ecosystem" class="laser-btn border border-white/20 bg-white/5 px-8 py-3.5 rounded-xl font-bold gotg-font" id="exploreBtn">Explore Ecosystem</a>
         </div>
     </section>
 
     <section id="ecosystem" class="max-w-7xl mx-auto py-20 px-6">
-        <div class="flex items-center gap-4 mb-14 md:mb-20">
-            <h2 class="text-xl md:text-2xl font-black text-white gotg-font" id="engineTitle">Core Engines</h2>
+        <div class="flex items-center gap-4 mb-16">
+            <h2 class="text-2xl font-black gotg-font" id="engineTitle">Core Engines</h2>
             <div class="h-[1px] flex-grow bg-gradient-to-r from-red-600 to-transparent opacity-20"></div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div class="glass-card p-8 rounded-[2rem]">
-                <div class="text-red-600 text-2xl mb-6">🚀</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card p-8 rounded-[2rem] text-center lg:text-left">
+                <div class="text-3xl mb-4">🚀</div>
                 <h3 class="text-lg font-black mb-4 gotg-font" id="engine1Title">DeFi</h3>
-                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="defiDesc">Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.</p>
+                <p class="text-gray-400 text-sm" id="defiDesc">Algorithmic intelligence to maximize yield.</p>
             </div>
-            <div class="glass-card p-8 rounded-[2rem]">
-                <div class="text-red-600 text-2xl mb-6">🪂</div>
+            <div class="glass-card p-8 rounded-[2rem] text-center lg:text-left">
+                <div class="text-3xl mb-4">🪂</div>
                 <h3 class="text-lg font-black mb-4 gotg-font" id="engine2Title">Airdrop</h3>
-                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="airdropDesc">Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.</p>
+                <p class="text-gray-400 text-sm" id="airdropDesc">Strategic pathfinding for ecosystem incentives.</p>
             </div>
-            <div class="glass-card p-8 rounded-[2rem]">
-                <div class="text-red-600 text-2xl mb-6">🎮</div>
+            <div class="glass-card p-8 rounded-[2rem] text-center lg:text-left">
+                <div class="text-3xl mb-4">🎮</div>
                 <h3 class="text-lg font-black mb-4 gotg-font" id="engine3Title">GameFi</h3>
-                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="gamefiDesc">Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.</p>
+                <p class="text-gray-400 text-sm" id="gamefiDesc">Navigating the Metaverse and P2E gems.</p>
             </div>
-            <div class="glass-card p-8 rounded-[2rem]">
-                <div class="text-red-600 text-2xl mb-6">💎</div>
+            <div class="glass-card p-8 rounded-[2rem] text-center lg:text-left">
+                <div class="text-3xl mb-4">💎</div>
                 <h3 class="text-lg font-black mb-4 gotg-font" id="engine4Title">Meme</h3>
-                <p class="text-gray-400 text-xs md:text-sm leading-relaxed" id="memeDesc">Decoding social consensus and market psychology to identify high-velocity cultural assets.</p>
+                <p class="text-gray-400 text-sm" id="memeDesc">Decoding social consensus assets.</p>
             </div>
         </div>
     </section>
 
-    <footer class="py-16 border-t border-white/5 text-center bg-[#050505]">
-        <div class="flex justify-center gap-8 md:gap-12 mb-8 px-6">
-            <a href="https://x.com/otgdeficommunit" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font">Twitter</a>
-            <a href="https://instagram.com/otgdeficommunity" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font">Instagram</a>
-            <a href="https://linktr.ee/otgdeficommunity" target="_blank" class="text-gray-500 hover:text-red-500 text-[10px] transition uppercase tracking-widest gotg-font">Linktree</a>
+    <section id="feed" class="max-w-7xl mx-auto py-24 px-6 border-t border-white/5">
+        <div class="flex flex-col lg:flex-row gap-16">
+            <div class="lg:w-1/3">
+                <div class="inline-block px-3 py-1 border border-red-600/50 rounded-full text-red-500 text-[10px] font-bold mb-4 gotg-font" id="commandLabel">Command Center</div>
+                <h2 class="text-3xl font-black mb-6 gotg-font" id="liveTitle">Live Intelligence</h2>
+                <p class="text-gray-400 mb-8" id="liveDesc">Real-time data synchronization with OTG Command.</p>
+                <a href="https://twitter.com/otgdeficommunit" target="_blank" class="laser-btn border border-white/20 bg-white/5 px-6 py-3 rounded-xl text-xs font-bold gotg-font" id="twitterBtn">Follow on X →</a>
+            </div>
+            <div class="w-full lg:w-2/3 glass-card rounded-3xl p-1 h-[450px] overflow-hidden">
+                <a class="twitter-timeline" data-height="450" data-theme="dark" href="https://twitter.com/otgdeficommunit">Loading Signals...</a>
+                <script async src="https://platform.twitter.com/widgets.js"></script>
+            </div>
         </div>
-        <p class="text-gray-700 text-[9px] uppercase tracking-[0.2em]">© 2026 OTG DeFi Community. All systems functional.</p>
+    </section>
+
+    <section id="calendar" class="max-w-7xl mx-auto py-24 px-6 border-t border-white/5">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black mb-4 gotg-font" id="calendarTitle">Event Horizon</h2>
+            <p class="text-gray-400" id="calendarDesc">Join our exclusive alpha sessions.</p>
+        </div>
+        <div class="glass-card rounded-3xl h-[600px] overflow-hidden">
+            <iframe src="https://luma.com/embed/calendar/cal-on7JhqL0wqyVFFi/events" width="100%" height="100%" frameborder="0" style="border-radius: 1rem;"></iframe>
+        </div>
+    </section>
+
+    <section id="partners" class="py-20 border-t border-b border-white/5 bg-zinc-900/10 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 mb-12 text-center">
+            <h2 class="text-2xl font-black gotg-font opacity-80" id="partnerTitle">Strategic Vanguard</h2>
+        </div>
+        <div class="carousel-track-1 mb-8" id="logo-track-1"></div>
+        <div class="carousel-track-2" id="logo-track-2"></div>
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
+    </section>
+
+    <section id="og" class="py-24 border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-16 gotg-font" id="ogTitle">OG Passport NFT</h2>
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="relative w-full lg:w-1/2 aspect-video bg-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                    <video autoplay loop muted playsinline class="w-full h-full object-cover"><source src="og-passport.mp4" type="video/mp4"></video>
+                </div>
+                <div class="lg:text-left lg:w-1/2">
+                    <h3 class="text-2xl font-bold mb-6 gotg-font" id="ogSubTitle">Proof of Consensus</h3>
+                    <p class="text-gray-400 mb-8" id="ogDesc">The spiritual lighthouse for the early OTG community.</p>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-600 rounded-full"></span><span id="ogList1">Founding Adopter Status</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-red-600 rounded-full"></span><span id="ogList2">Priority Ecosystem Access</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center">
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="#" class="text-gray-500 hover:text-red-500 text-xs gotg-font uppercase">Twitter</a>
+            <a href="#" class="text-gray-500 hover:text-red-500 text-xs gotg-font uppercase">Linktree</a>
+        </div>
+        <p class="text-gray-700 text-[10px] tracking-widest uppercase">© 2026 OTG DeFi Community. All systems functional.</p>
     </footer>
 
     <script>
-        // 🌍 1. 双语言配置
         const i18n = {
             en: {
-                langBtn: 'CN', navConnect: 'Connect Wallet', navGallery: 'Gallery', heroGallery: 'View Gallery →',
-                heroDesc: 'Architecting the future of Web3 exploration. From algorithmic Alpha to social consensus, we empower your ascent from zero to one.',
+                langBtn: 'CN', navConnect: 'Connect Wallet', navGallery: 'Gallery',
+                heroDesc: 'Architecting the future of Web3 exploration. From zero to one.',
                 joinBtn: 'Join Community', exploreBtn: 'Explore Ecosystem', engineTitle: 'Core Engines',
-                defiDesc: 'Algorithmic intelligence and protocol deep-dives to maximize sustainable yield generation.',
-                airdropDesc: 'Strategic pathfinding and yield engineering to capture the most valuable ecosystem incentives.',
-                gamefiDesc: 'Navigating the Metaverse frontier. Identifying P2E gems and scalable gaming infrastructures.',
-                memeDesc: 'Decoding social consensus and market psychology to identify high-velocity cultural assets.',
-                commandLabel: 'Command Center', liveTitle: 'Live Intelligence', partnerTitle: 'Strategic Vanguard',
-                liveDesc: 'Real-time data synchronization with OTG Command. Follow our X for institutional-grade market signals.',
-                twitterBtn: 'Follow on X →', 
-                calendarLabel: 'Operations', calendarTitle: 'Event Horizon', calendarDesc: 'Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.',
+                engine1Title: 'DeFi', defiDesc: 'Maximize yield generation.',
+                engine2Title: 'Airdrop', airdropDesc: 'Capture ecosystem incentives.',
+                engine3Title: 'GameFi', gamefiDesc: 'Metaverse gems & P2E.',
+                engine4Title: 'Meme', memeDesc: 'Social consensus assets.',
+                commandLabel: 'Command Center', liveTitle: 'Live Intelligence', liveDesc: 'Real-time data synchronization.',
+                twitterBtn: 'Follow on X →', partnerTitle: 'Strategic Vanguard',
+                calendarTitle: 'Event Horizon', calendarDesc: 'Join exclusive alpha sessions.',
                 ogTitle: 'OG Passport NFT', ogSubTitle: 'Proof of Consensus',
-                ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
-                ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
-                disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
-                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice.',
-                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme',
+                ogDesc: 'Spiritual lighthouse for early community.',
+                ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access',
                 musicPlay: '🎵 Play BGM', musicPause: '⏸️ Pause BGM'
             },
             cn: {
-                langBtn: 'EN', navConnect: '连接钱包', navGallery: '画廊', heroGallery: '浏览画廊 →',
-                heroDesc: '助力每一位 Web3 探索者实现从 0 到 1 的财富起飞。深耕 DeFi、GameFi、空投研判与 Meme 热潮。',
+                langBtn: 'EN', navConnect: '连接钱包', navGallery: '画廊',
+                heroDesc: '助力 Web3 探索者实现从 0 到 1 的起飞。',
                 joinBtn: '加入社区', exploreBtn: '探索生态', engineTitle: '核心引擎',
-                defiDesc: '深度解析协议逻辑，挖掘可持续复利收益，探索流动性策略。',
-                airdropDesc: '精细化空投路径规划，拒绝无效交互，抢占早期发射红利。',
-                gamefiDesc: '探索 P2E 潜力项目，分析链游生态，布局 Web3 娱乐前沿。',
-                memeDesc: '敏锐捕捉市场情绪，洞察高爆发资产，玩转社区共识。',
-                commandLabel: '指挥中心', liveTitle: '实时情报', partnerTitle: '战略合作伙伴',
-                liveDesc: '实时同步 OTG 指挥中心的最新讯号。关注我们的 X (Twitter)，不错过任何一次 Web3 发射红利。',
-                twitterBtn: '关注推特 →',
-                calendarLabel: '行动代号', calendarTitle: '活动视界', calendarDesc: '加入我们即将到来的 AMA、线下见面会与独家 Alpha 闭门会。',
-                ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章，先遣印记',
-                ogDesc: '这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。',
-                ogList1: '早期开拓者身份象征', ogList2: '未来生态权益预留', ogList3: '社区治理优先权',
-                disclaimerTitle: '法律免责声明 (NFA / DYOR)',
-                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考，不构成财务、投资或法律建议。',
-                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme',
+                engine1Title: 'DeFi', defiDesc: '挖掘可持续复利收益。',
+                engine2Title: '空投', airdropDesc: '抢占早期发射红利。',
+                engine3Title: '链游', gamefiDesc: '布局 Web3 娱乐前沿。',
+                engine4Title: 'Meme', memeDesc: '玩转社区共识资产。',
+                commandLabel: '指挥中心', liveTitle: '实时情报', liveDesc: '实时同步指挥中心讯号。',
+                twitterBtn: '关注推特 →', partnerTitle: '战略合作伙伴',
+                calendarTitle: '活动视界', calendarDesc: '加入独家 Alpha 闭门会。',
+                ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章',
+                ogDesc: 'OTG 社区早期的精神图腾。',
+                ogList1: '早期开拓者身份', ogList2: '未来生态权益预留',
                 musicPlay: '🎵 播放音乐', musicPause: '⏸️ 暂停音乐'
             }
         };
 
         let currentLang = localStorage.getItem('otg_lang') || 'en';
-        var audio = document.getElementById("bgm");
-        var btnText = document.getElementById("musicBtnText");
+        const audio = document.getElementById("bgm");
+        const btnText = document.getElementById("musicBtnText");
 
         function updateContent() {
             const data = i18n[currentLang];
-            
-            // 批量更新文本
-            const elementsToUpdate = [
-                'langBtn', 'navConnect', 'navGallery', 'heroGallery', 'heroDesc', 
-                'joinBtn', 'exploreBtn', 'engineTitle', 'defiDesc', 'airdropDesc', 
-                'gamefiDesc', 'memeDesc', 'commandLabel', 'liveTitle', 'liveDesc', 
-                'calendarLabel', 'calendarTitle', 'calendarDesc',
-                'partnerTitle', 'ogTitle', 'ogSubTitle', 'ogDesc', 'ogList1', 
-                'ogList2', 'ogList3', 'disclaimerTitle', 'disclaimerText', 'twitterBtn',
-                'engine1Title', 'engine2Title', 'engine3Title', 'engine4Title'
-            ];
-
-            elementsToUpdate.forEach(id => {
+            const ids = ['langBtn','navConnect','navGallery','heroDesc','joinBtn','exploreBtn','engineTitle',
+                        'engine1Title','defiDesc','engine2Title','airdropDesc','engine3Title','gamefiDesc',
+                        'engine4Title','memeDesc','commandLabel','liveTitle','liveDesc','twitterBtn',
+                        'partnerTitle','calendarTitle','calendarDesc','ogTitle','ogSubTitle','ogDesc','ogList1','ogList2'];
+            ids.forEach(id => {
                 const el = document.getElementById(id);
-                if (el) {
-                    const span = el.querySelector('span.relative');
-                    if (span) { span.innerText = data[id]; } else { el.innerText = data[id]; }
-                }
+                if(el) el.innerText = data[id];
             });
-
-            // 特别处理音乐按钮文字
-            if (audio.paused) { btnText.innerText = data.musicPlay; } else { btnText.innerText = data.musicPause; }
+            btnText.innerText = audio.paused ? data.musicPlay : data.musicPause;
         }
 
-        function toggleLang() { 
-            currentLang = currentLang === 'en' ? 'cn' : 'en'; 
-            localStorage.setItem('otg_lang', currentLang); 
-            updateContent(); 
-        }
+        function toggleLang() { currentLang = currentLang === 'en' ? 'cn' : 'en'; localStorage.setItem('otg_lang', currentLang); updateContent(); }
+        function toggleMusic() { if(audio.paused){ audio.play(); } else { audio.pause(); } updateContent(); }
 
-        // 🎵 音乐控制逻辑
-        function toggleMusic() {
-            const data = i18n[currentLang];
-            if (audio.paused) {
-                audio.play();
-                btnText.innerText = data.musicPause;
-            } else {
-                audio.pause();
-                btnText.innerText = data.musicPlay;
+        // 合作伙伴 Logo 轨道
+        function setupLogos() {
+            const row1 = document.getElementById('logo-track-1');
+            const row2 = document.getElementById('logo-track-2');
+            let html1 = '', html2 = '';
+            for(let i=1; i<=33; i++) {
+                const item = `<div class="partner-logo"><img src="partners/${i}.png" onerror="this.parentElement.style.display='none'"></div>`;
+                if(i<=17) html1 += item; else html2 += item;
             }
+            row1.innerHTML = html1 + html1;
+            row2.innerHTML = html2 + html2;
         }
-        
-        document.addEventListener('DOMContentLoaded', updateContent);
 
-        // 🌌 2. 星空引擎逻辑 (简略版，与你原版一致)
-        const canvas = document.getElementById('starfield'); 
-        const ctx = canvas.getContext('2d'); 
+        // 星空引擎
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
         let stars = [];
-        function initStars() { 
-            canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; 
-            for (let i = 0; i < 400; i++) { stars.push({ x: Math.random() * canvas.width - canvas.width / 2, y: Math.random() * canvas.height - canvas.height / 2, z: Math.random() * canvas.width, o: Math.random() }); }
+        function initStars() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = [];
+            for(let i=0; i<400; i++) stars.push({x:Math.random()*canvas.width-canvas.width/2, y:Math.random()*canvas.height-canvas.height/2, z:Math.random()*canvas.width, o:Math.random()});
         }
-        function updateStars() { 
-            ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2; const cy = canvas.height / 2;
-            stars.forEach(s => { s.z -= 2; if (s.z <= 0) s.z = canvas.width; const sx = (s.x * (canvas.width / s.z)) + cx; const sy = (s.y * (canvas.width / s.z)) + cy; const size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); });
-            requestAnimationFrame(updateStars); 
+        function drawStars() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            stars.forEach(s => {
+                s.z -= 2; if(s.z<=0) s.z=canvas.width;
+                const sx = (s.x*(canvas.width/s.z))+canvas.width/2;
+                const sy = (s.y*(canvas.width/s.z))+canvas.height/2;
+                ctx.fillStyle = `rgba(255,255,255,${s.o})`;
+                ctx.beginPath(); ctx.arc(sx, sy, (1-s.z/canvas.width)*2, 0, Math.PI*2); ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
         }
-        window.addEventListener('resize', initStars); initStars(); updateStars();
+
+        window.addEventListener('resize', initStars);
+        initStars(); drawStars(); setupLogos(); updateContent();
     </script>
 </body>
 </html>
