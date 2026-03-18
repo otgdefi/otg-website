@@ -65,6 +65,11 @@
         </div>
     </nav>
 
+    <button onclick="toggleMusic()" id="musicBtn" class="fixed bottom-5 right-5 z-[999] glass-card border border-white/10 px-4 py-2 rounded-full font-bold text-[10px] text-white gotg-font laser-btn transition-all duration-300">
+        <span id="musicBtnText" class="relative z-10">🎵 Play BGM</span>
+    </button>
+    <audio id="bgm" loop><source src="OTG-BGM.mp3" type="audio/mpeg"></audio>
+
     <section class="py-20 md:py-36 px-6 flex flex-col items-center text-center" id="hero">
         <div class="relative mb-8 md:mb-12">
             <img src="OTG.png" alt="OTG Logo" class="w-28 h-28 md:w-40 md:h-40 drop-shadow-[0_0_40px_rgba(230,0,18,0.5)] animate-pulse">
@@ -136,10 +141,6 @@
                 </a>
             </div>
             <div class="w-full lg:w-2/3 glass-card rounded-3xl p-1 overflow-hidden h-[450px] relative">
-                <div class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/50 -z-10">
-                    <img src="OTG.png" class="w-12 h-12 opacity-20 mb-4" alt="OTG Logo">
-                    <p class="text-xs text-gray-500 uppercase tracking-widest">Connecting to X Network...</p>
-                </div>
                 <div id="twitter-container">
                     <a class="twitter-timeline" data-height="450" data-theme="dark" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/otgdeficommunit">Loading Signals...</a> 
                 </div>
@@ -152,22 +153,10 @@
         <div class="text-center mb-12">
             <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[9px] font-bold tracking-widest mb-4 gotg-font" id="calendarLabel">Operations</div>
             <h2 class="text-2xl md:text-4xl font-black mb-4 gotg-font text-white" id="calendarTitle">Event Horizon</h2>
-            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto" id="calendarDesc">
-                Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.
-            </p>
+            <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto" id="calendarDesc">Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.</p>
         </div>
-        
         <div class="w-full glass-card rounded-3xl p-2 md:p-4 overflow-hidden h-[600px] relative shadow-2xl">
-            <iframe
-                src="https://luma.com/embed/calendar/cal-on7JhqL0wqyVFFi/events"
-                width="100%"
-                height="100%"
-                frameborder="0"
-                style="border: transparent; border-radius: 1rem; background-color: transparent;"
-                allowfullscreen=""
-                aria-hidden="false"
-                tabindex="0"
-            ></iframe>
+            <iframe src="https://luma.com/embed/calendar/cal-on7JhqL0wqyVFFi/events" width="100%" height="100%" frameborder="0" style="border: transparent; border-radius: 1rem; background-color: transparent;"></iframe>
         </div>
     </section>
 
@@ -187,39 +176,23 @@
         <div class="max-w-6xl mx-auto px-6 text-center">
             <div class="inline-block px-4 py-1 border border-red-600/50 rounded-full text-red-500 text-[9px] font-bold tracking-widest mb-6 gotg-font">Genesis Assets</div>
             <h2 class="text-2xl md:text-4xl font-black mb-16 gotg-font" id="ogTitle">OG Passport NFT</h2>
-            
             <div class="flex flex-col lg:flex-row items-center justify-center gap-12 md:gap-16">
-                <div class="relative group cursor-pointer w-full max-w-[320px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
-                    <div class="absolute -inset-2 bg-gradient-to-r from-red-600 via-orange-500 to-red-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-70 transition duration-1000"></div>
-                    
-                    <div class="relative w-full aspect-video bg-black rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-                        <video autoplay loop muted playsinline webkit-playsinline poster="OTG.png" class="w-full h-full object-cover object-center transform scale-110">
-                            <source src="og-passport.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none"></div>
+                <div class="relative group cursor-pointer w-full max-w-[500px]">
+                    <div class="absolute -inset-2 bg-gradient-to-r from-red-600 to-red-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-70 transition duration-1000"></div>
+                    <div class="relative w-full aspect-video bg-black rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover"><source src="og-passport.mp4" type="video/mp4"></video>
                     </div>
                 </div>
-
                 <div class="lg:text-left max-w-md px-4">
                     <h3 class="text-lg md:text-2xl font-bold mb-5 gotg-font" id="ogSubTitle">Proof of Consensus</h3>
                     <p class="text-gray-400 leading-relaxed text-sm md:text-base mb-8" id="ogDesc">The spiritual lighthouse for the early OTG community.</p>
                     <ul class="text-[11px] md:text-sm space-y-4 text-gray-400">
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList1">Founding Adopter Status</span></li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList2">Priority Ecosystem Access</span></li>
-                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full flex-shrink-0"></span><span id="ogList3">Governance Participation</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span><span id="ogList1">Founding Adopter Status</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span><span id="ogList2">Priority Ecosystem Access</span></li>
+                        <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span><span id="ogList3">Governance Participation</span></li>
                     </ul>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto py-12 px-10 text-white">
-        <div class="bg-white/5 p-6 rounded-2xl border border-white/10 text-white">
-            <h3 class="gotg-font text-red-600 text-[10px] mb-4" id="disclaimerTitle">Disclaimer</h3>
-            <p class="text-gray-500 text-[9px] md:text-[11px] leading-relaxed" id="disclaimerText">
-                Trading cryptocurrencies involves significant risk...
-            </p>
         </div>
     </section>
 
@@ -248,11 +221,10 @@
                 twitterBtn: 'Follow on X →', 
                 calendarLabel: 'Operations', calendarTitle: 'Event Horizon', calendarDesc: 'Join our upcoming AMAs, offline meetups, and exclusive alpha sessions.',
                 ogTitle: 'OG Passport NFT', ogSubTitle: 'Proof of Consensus',
-                ogDesc: 'The spiritual lighthouse for the early OTG community. It identifies the core contributors who paved the road from 0 to 1.',
+                ogDesc: 'The spiritual lighthouse for the early OTG community.',
                 ogList1: 'Founding Adopter Status', ogList2: 'Priority Ecosystem Access', ogList3: 'Governance Participation',
-                disclaimerTitle: 'Legal Disclaimer (NFA / DYOR)',
-                disclaimerText: 'Trading cryptocurrencies involves significant risk and may result in the loss of your capital. All content provided on this website is for informational and educational purposes only and does not constitute financial, investment, or legal advice. Non Financial Advice (NFA). Do Your Own Research (DYOR). OTG DeFi Community is not responsible for any financial losses.',
-                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme'
+                disclaimerTitle: 'Disclaimer', engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme',
+                musicPlay: '🎵 Play BGM', musicPause: '⏸️ Pause BGM'
             },
             cn: {
                 langBtn: 'EN', navConnect: '连接钱包', navGallery: '画廊', heroGallery: '浏览画廊 →',
@@ -267,26 +239,26 @@
                 twitterBtn: '关注推特 →',
                 calendarLabel: '行动代号', calendarTitle: '活动视界', calendarDesc: '加入我们即将到来的 AMA、线下见面会与独家 Alpha 闭门会。',
                 ogTitle: 'OG 通行证 NFT', ogSubTitle: '共识勋章，先遣印记',
-                ogDesc: '这是 OTG 社区早期的精神图腾。它见证了与我们并肩作战、共同从 0 到 1 的核心贡献者。',
+                ogDesc: '这是 OTG 社区早期的精神图腾。',
                 ogList1: '早期开拓者身份象征', ogList2: '未来生态权益预留', ogList3: '社区治理优先权',
-                disclaimerTitle: '法律免责声明 (NFA / DYOR)',
-                disclaimerText: '加密货币交易涉及重大风险，可能导致您的资本损失。本网站提供的所有内容仅供参考和教育目的，不构成财务、投资或法律建议。不构成财务建议 (NFA)。请自行研究 (DYOR)。OTG DeFi 社区对任何财务损失概不负责。',
-                engine1Title: 'DeFi', engine2Title: 'Airdrop', engine3Title: 'GameFi', engine4Title: 'Meme'
+                disclaimerTitle: '免责声明', engine1Title: 'DeFi', engine2Title: '空投', engine3Title: '链游', engine4Title: 'Meme',
+                musicPlay: '🎵 播放音乐', musicPause: '⏸️ 暂停音乐'
             }
         };
 
         let currentLang = localStorage.getItem('otg_lang') || 'en';
-        
+        const audio = document.getElementById("bgm");
+        const btnText = document.getElementById("musicBtnText");
+
         function updateContent() {
             const data = i18n[currentLang];
-            
             const elementsToUpdate = [
                 'langBtn', 'navConnect', 'navGallery', 'heroGallery', 'heroDesc', 
                 'joinBtn', 'exploreBtn', 'engineTitle', 'defiDesc', 'airdropDesc', 
                 'gamefiDesc', 'memeDesc', 'commandLabel', 'liveTitle', 'liveDesc', 
                 'calendarLabel', 'calendarTitle', 'calendarDesc',
                 'partnerTitle', 'ogTitle', 'ogSubTitle', 'ogDesc', 'ogList1', 
-                'ogList2', 'ogList3', 'disclaimerTitle', 'disclaimerText', 'twitterBtn',
+                'ogList2', 'ogList3', 'disclaimerTitle', 'twitterBtn',
                 'engine1Title', 'engine2Title', 'engine3Title', 'engine4Title'
             ];
 
@@ -294,13 +266,15 @@
                 const el = document.getElementById(id);
                 if (el) {
                     const span = el.querySelector('span.relative');
-                    if (span) {
-                        span.innerText = data[id];
-                    } else {
-                        el.innerText = data[id];
-                    }
+                    if (span) span.innerText = data[id];
+                    else el.innerText = data[id];
                 }
             });
+
+            // 背景音乐按钮文字同步更新
+            if (btnText) {
+                btnText.innerText = audio.paused ? data.musicPlay : data.musicPause;
+            }
         }
 
         function toggleLang() { 
@@ -308,98 +282,69 @@
             localStorage.setItem('otg_lang', currentLang); 
             updateContent(); 
         }
-        
-        document.addEventListener('DOMContentLoaded', updateContent);
 
-        // 🌌 2. 星空引擎逻辑
-        const canvas = document.getElementById('starfield'); 
-        const ctx = canvas.getContext('2d'); 
-        let stars = [];
-
-        function initStars() { 
-            canvas.width = window.innerWidth; 
-            canvas.height = window.innerHeight; 
-            stars = []; 
-            for (let i = 0; i < 400; i++) {
-                stars.push({ 
-                    x: Math.random() * canvas.width - canvas.width / 2, 
-                    y: Math.random() * canvas.height - canvas.height / 2, 
-                    z: Math.random() * canvas.width, 
-                    o: Math.random() 
-                }); 
+        // 🎵 背景音乐控制逻辑
+        function toggleMusic() {
+            const data = i18n[currentLang];
+            if (audio.paused) {
+                audio.play();
+                btnText.innerText = data.musicPause;
+            } else {
+                audio.pause();
+                btnText.innerText = data.musicPlay;
             }
         }
 
+        // 🌌 星空引擎逻辑
+        const canvas = document.getElementById('starfield'); 
+        const ctx = canvas.getContext('2d'); 
+        let stars = [];
+        function initStars() { 
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight; stars = []; 
+            for (let i = 0; i < 400; i++) {
+                stars.push({ x: Math.random() * canvas.width - canvas.width / 2, y: Math.random() * canvas.height - canvas.height / 2, z: Math.random() * canvas.width, o: Math.random() }); 
+            }
+        }
         function updateStars() { 
-            ctx.clearRect(0, 0, canvas.width, canvas.height); 
-            const cx = canvas.width / 2;
-            const cy = canvas.height / 2; 
-            
+            ctx.clearRect(0, 0, canvas.width, canvas.height); const cx = canvas.width / 2; const cy = canvas.height / 2;
             stars.forEach(s => { 
-                s.z -= 2; 
-                if (s.z <= 0) s.z = canvas.width; 
-                
-                const sx = (s.x * (canvas.width / s.z)) + cx;
-                const sy = (s.y * (canvas.width / s.z)) + cy;
-                const size = (1 - s.z / canvas.width) * 2; 
-                
-                ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; 
-                ctx.beginPath(); 
-                ctx.arc(sx, sy, size, 0, Math.PI * 2); 
-                ctx.fill(); 
+                s.z -= 2; if (s.z <= 0) s.z = canvas.width;
+                const sx = (s.x * (canvas.width / s.z)) + cx; const sy = (s.y * (canvas.width / s.z)) + cy;
+                const size = (1 - s.z / canvas.width) * 2; ctx.fillStyle = `rgba(255, 255, 255, ${s.o})`; ctx.beginPath(); ctx.arc(sx, sy, size, 0, Math.PI * 2); ctx.fill(); 
             }); 
             requestAnimationFrame(updateStars); 
         }
+        window.addEventListener('resize', initStars); initStars(); updateStars();
 
-        window.addEventListener('resize', initStars); 
-        initStars(); 
-        updateStars();
-
-        // 🎡 3. 动态合作伙伴 Logo 引擎
+        // 🎡 3. 动态合作伙伴 Logo 引擎 + 性能保护
         const partnerCount = 33; 
-        const formats = ['png', 'svg', 'webp', 'jpg', 'jpeg'];
-        
         function getLogoHTML(i) { 
-            return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" data-format-index="0" onerror="tryNextFormat(this)" alt="OTG Partner"></div>`; 
+            // 默认尝试 PNG，如果失败触发 tryNextFormat
+            return `<div class="partner-logo"><img src="partners/${i}.png" data-index="${i}" onerror="handleLogoError(this)" alt="OTG Partner"></div>`; 
         }
-        
         function generateLogos() { 
             let row1 = '', row2 = ''; 
-            let count1 = 0, count2 = 0;
-            
             for (let i = 1; i <= partnerCount; i++) { 
-                if (i <= Math.ceil(partnerCount / 2)) { 
-                    row1 += getLogoHTML(i); 
-                    count1++; 
-                } else { 
-                    row2 += getLogoHTML(i); 
-                    count2++; 
-                } 
+                if (i <= Math.ceil(partnerCount / 2)) row1 += getLogoHTML(i); 
+                else row2 += getLogoHTML(i); 
             } 
-            
             const track1 = document.getElementById('logo-track-1'); 
             const track2 = document.getElementById('logo-track-2');
-            
             track1.innerHTML = row1 + row1; 
             track2.innerHTML = row2 + row2; 
-            
-            track1.style.animationDuration = `${count1 * 2.5}s`; 
-            track2.style.animationDuration = `${count2 * 2.8}s`; 
         }
         
-        window.tryNextFormat = function(img) { 
-            const index = img.getAttribute('data-index'); 
-            let formatIndex = parseInt(img.getAttribute('data-format-index')) + 1; 
-            
-            if (formatIndex < formats.length) { 
-                img.setAttribute('data-format-index', formatIndex); 
-                img.src = `partners/${index}.${formats[formatIndex]}`; 
-            } else { 
-                img.parentElement.style.display = 'none'; 
-            } 
+        // 🛡️ 性能保护：如果图片不存在直接移除父容器，避免裂图
+        window.handleLogoError = function(img) {
+            console.warn(`Partner logo ${img.src} not found. Removing...`);
+            const container = img.parentElement;
+            if (container) container.remove();
         };
-        
-        document.addEventListener('DOMContentLoaded', generateLogos);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            generateLogos();
+            updateContent();
+        });
     </script>
 </body>
 </html>
